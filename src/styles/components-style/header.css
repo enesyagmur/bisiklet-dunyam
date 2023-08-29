@@ -1,0 +1,85 @@
+.header {
+  width: 100%;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--darkGray);
+}
+
+.header-top {
+  width: 68%;
+  min-height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+.header-top .header-icons {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.header-icons .icon {
+  font-size: var(--large);
+  font-weight: bold;
+  cursor: pointer;
+}
+.header-icons .icon:hover {
+  color: var(--black);
+}
+.header-top .bike {
+  width: 4%;
+  margin-top: 30px;
+  position: absolute;
+  left: -40px;
+  bottom: 0;
+}
+.mountain-icons {
+  width: 70%;
+  height: 75px;
+  display: flex;
+  align-items: flex-end;
+}
+.mountain-icons .img {
+  width: 7%;
+  opacity: 0.6;
+}
+
+/* ---------------- */
+.header-bottom {
+  width: 80%;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--darkGray);
+}
+.header-bottom .logo {
+  color: var(--black);
+
+  font-size: var(--large);
+  font-weight: bold;
+}
+.header-bottom .header-links {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-links p {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease 0.7s;
+  cursor: pointer;
+}
+.header-links p:hover {
+  background-color: var(--red);
+  color: var(--bgBody);
+}
