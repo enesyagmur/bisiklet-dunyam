@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Teko", sans-serif;
 }
 :root {
   --bgBody: #f5f5f5;
@@ -11,6 +13,7 @@
   --lightGray: #e6e6e5;
   --darkGray: #82827d;
   --black: black;
+  --white: white;
 
   --smal: 10px;
   --medium: 15px;

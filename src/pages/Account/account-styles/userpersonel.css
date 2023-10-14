@@ -1,0 +1,139 @@
+.userpersonel {
+  width: 80%;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.back-button {
+  width: 5%;
+  height: 20px;
+  cursor: pointer;
+}
+
+.inactive {
+  display: none;
+  opacity: 0;
+}
+/* ------------------ */
+.user-personel-title {
+  width: 100%;
+  height: 40px;
+  background-color: var(--darkGray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  border-radius: 5px;
+  position: relative;
+}
+.user-personel-title .title {
+  text-align: center;
+}
+.user-personel-title .back-button {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 5%;
+  font-size: var(--large);
+}
+/* /--------------------------- */
+.user-personel-info-show {
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.user-personel-info-show p {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: var(--lightGray);
+  position: relative;
+}
+.change-personel-info-icon {
+  position: absolute;
+  right: 5%;
+  font-size: var(--small);
+  color: var(--darkGray);
+  cursor: pointer;
+}
+.change-personel-info-icon:hover {
+  color: var(--black);
+}
+
+/* /--------------------------- */
+
+.user-personel-info-input {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.user-personel-info-input p {
+  width: 80%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-personel-info-input input {
+  width: 80%;
+  height: 40px;
+  display: flex;
+  text-align: center;
+  border-radius: 5px;
+}
+.user-personel-info-input button {
+  width: 80%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bgBody);
+  border: 1px solid var(--darkGray);
+  cursor: pointer;
+}
+.user-personel-info-input button:hover {
+  background-color: var(--darkGray);
+  border: 1px solid var(--darkGray);
+  color: var(--bgBody);
+}
+
+/* /--------------------------- */
+.reset-info {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+.reset-info input {
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid var(--darkGray);
+}
+.reset-info button {
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--darkGray);
+  color: var(--white);
+}

@@ -1,0 +1,115 @@
+.adress-select {
+  width: 100%;
+  min-height: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+}
+/*--------------------------------- */
+.user-adress {
+  width: 80%;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.user-adress .user-adress-title {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--darkGray);
+  color: var(--white);
+  border-radius: 10px;
+  position: relative;
+}
+.adres-change-btn {
+  width: 20;
+  height: 20px;
+  cursor: pointer;
+  font-size: var(--medium);
+  position: absolute;
+  right: 5%;
+}
+.adres-change-btn:hover {
+  color: var(--red);
+}
+
+.user-adress .user-adress-info {
+  width: 100%;
+  height: 300px;
+  line-height: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+.user-adress .user-adress-info div {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+/*--------------------------------- */
+.delivery-type {
+  width: 80%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.delivery-type-title {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--darkGray);
+  color: var(--white);
+  border-radius: 10px;
+}
+.delivery-type .types {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.delivery-type .types div {
+  width: 45%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid var(--darkGray);
+
+  margin: 10px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.delivery-type-icon {
+  font-size: var(--xxlarge);
+  color: var(--red);
+  font-weight: bold;
+}
+
+.invalid-method {
+  opacity: 0.3;
+  color: var(--darkGray);
+  border: 0.5px solid var(--lightGray);
+}
+.valid-method {
+  border-color: var(--red);
+}

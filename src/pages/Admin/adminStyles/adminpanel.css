@@ -1,0 +1,32 @@
+.adminpanel {
+  width: 20%;
+  min-height: 100%;
+  background-color: var(--darkGray);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.adminpanel-pages {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  position: sticky;
+  top: 0;
+}
+.adminpanel-pages p {
+  width: 80%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bgBody);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.adminpanel-pages p:hover {
+  border-radius: 10px;
+  background-color: var(--lightGray);
+}

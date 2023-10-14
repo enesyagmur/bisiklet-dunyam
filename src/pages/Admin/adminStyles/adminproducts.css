@@ -1,0 +1,106 @@
+.panel-create-new-product {
+  width: 80%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--white);
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+.new-product-title {
+  font-size: var(--xlarge);
+  font-weight: bold;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.create-new-product {
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.create-new-product input {
+  width: 50%;
+  height: 40px;
+  text-align: center;
+}
+.create-new-product button {
+  width: 50%;
+  height: 40px;
+  background-color: var(--white);
+  color: var(--red);
+  border: 1px solid var(--red);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.create-new-product button:hover {
+  background-color: var(--red);
+  color: var(--white);
+}
+/* -------------------------------------- */
+
+.panel-products {
+  width: 80%;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.panel-products-title {
+  font-size: var(--xlarge);
+  font-weight: bold;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.panel-product-list {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.panel-single-product {
+  width: 20%;
+  background-color: var(--white);
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 20px;
+  position: relative;
+}
+.panel-single-product img {
+  max-width: 40%;
+  max-height: 50%;
+}
+.panel-single-product .product-name {
+  width: 70%;
+}
+.product-change-btn {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 2%;
+  top: 1%;
+  cursor: pointer;
+  color: darkblue;
+  font-size: var(--xlarge);
+}
+.product-delete-btn {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 2%;
+  top: 1%;
+  cursor: pointer;
+  color: var(--red);
+  font-size: var(--xlarge);
+}

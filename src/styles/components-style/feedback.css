@@ -1,0 +1,110 @@
+.feedback {
+  width: 80%;
+  min-height: 550px;
+  background-color: var(--darkGray);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 75px;
+  margin-bottom: 75px;
+  border-radius: 20px;
+  position: relative;
+}
+.feedback-title {
+  width: 80%;
+  text-align: start;
+  font-size: var(--xlarge);
+  color: var(--white);
+  margin-top: 40px;
+  font-weight: bold;
+}
+.comment-list {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.comment {
+  width: 450px;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: 10px;
+  transition: all 0.7s;
+  cursor: pointer;
+}
+.comment:hover {
+  box-shadow: 2px 2px 10px var(--black);
+}
+.comment .product-info {
+  margin-top: 10px;
+  color: var(--darkGray);
+  width: 80%;
+}
+
+.comment .user-icon {
+  font-size: var(--xxlarge);
+  color: var(--darkGray);
+}
+.user-comment {
+  width: 350px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.comment .user-info {
+  width: 80%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.comment .user-name {
+  background-color: var(--white);
+  color: var(--darkGray);
+  width: 100px;
+}
+.comment .user-point {
+  background-color: var(--white);
+  color: var(--darkGray);
+
+  width: 100px;
+}
+
+.feedback-left-btn {
+  position: absolute;
+  top: 55%;
+  left: 5%;
+  font-size: var(--xxlarge);
+  cursor: pointer;
+  color: var(--red);
+}
+.feedback-right-btn {
+  position: absolute;
+  top: 55%;
+  right: 5%;
+  font-size: var(--xxlarge);
+  color: var(--red);
+  cursor: pointer;
+}
+
+/* 600-1200px --------------------------------------- */
+@media (max-width: 1200px) {
+}
+
+/* 425-600px --------------------------------------- */
+
+@media (max-width: 600px) {
+}
+
+/* 0-425px --------------------------------------- */
+@media (max-width: 425px) {
+}

@@ -5,6 +5,9 @@
   flex-direction: column;
   align-items: center;
   color: var(--darkGray);
+  background-color: var(--white);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .header-top {
@@ -15,43 +18,48 @@
   justify-content: flex-end;
   position: relative;
 }
+
 .header-top .header-icons {
-  width: 10%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 .header-icons .icon {
-  font-size: var(--large);
+  width: 30px;
+  height: 40px;
   font-weight: bold;
   cursor: pointer;
+  display: flex;
 }
 .header-icons .icon:hover {
   color: var(--black);
+}
+.basket-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.basket-count {
+  position: absolute;
+  color: var(--red);
+  font-size: x-small;
+  font-weight: bold;
+  right: 7%;
+  top: 6%;
 }
 .header-top .bike {
   width: 4%;
   margin-top: 30px;
   position: absolute;
-  left: -40px;
+  left: -340px;
   bottom: 0;
-}
-.mountain-icons {
-  width: 70%;
-  height: 75px;
-  display: flex;
-  align-items: flex-end;
-}
-.mountain-icons .img {
-  width: 7%;
-  opacity: 0.6;
 }
 
 /* ---------------- */
 .header-bottom {
   width: 80%;
-  height: 55px;
+  min-height: 55px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -59,20 +67,20 @@
 }
 .header-bottom .logo {
   color: var(--black);
-
-  font-size: var(--large);
+  font-size: var(--xlarge);
   font-weight: bold;
+  cursor: pointer;
 }
 .header-bottom .header-links {
-  width: 40%;
+  width: 35%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .header-links p {
-  width: 25%;
-  height: 100%;
+  width: 35%;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,4 +90,38 @@
 .header-links p:hover {
   background-color: var(--red);
   color: var(--bgBody);
+}
+
+@media (max-width: 1700px) {
+  .header-top {
+    justify-content: center;
+  }
+  .bike {
+    display: none;
+  }
+}
+
+/* 600-1200px --------------------------------------- */
+@media (max-width: 1200px) {
+}
+
+/* 425-600px --------------------------------------- */
+
+@media (max-width: 600px) {
+  .header-bottom {
+    border-top: 0px;
+    border-bottom: 2px solid var(--darkGray);
+    flex-direction: column;
+  }
+  .header-bottom {
+    justify-content: space-around;
+  }
+  .header-bottom p {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+/* 0-425px --------------------------------------- */
+@media (max-width: 425px) {
 }

@@ -1,0 +1,119 @@
+.order-create {
+  width: 100%;
+  min-height: 1300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--bgBody);
+}
+.order-main {
+  width: 80%;
+  min-height: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-components {
+  width: 80%;
+  min-height: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  margin-top: 75px;
+  margin-bottom: 75px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px var(--darkGray);
+}
+.order-result {
+  width: 18%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: var(--white);
+  border-radius: 15px;
+  position: sticky;
+  top: 0;
+  box-shadow: 2px 2px 5px var(--darkGray);
+}
+.order-result .order-contract {
+  width: 80%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.order-contract .order-contract-info {
+  width: 80%;
+}
+.order-contract input {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.order-result .order-total {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.order-total .order-delivery-fee {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.order-total .order-total-amount {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.order-result .order-create-btn {
+  width: 80%;
+  height: 50px;
+  background-color: var(--white);
+  border: 1px solid var(--darkGray);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.order-result .order-create-btn:hover {
+  background-color: var(--darkGray);
+  color: var(--white);
+  border-radius: 10px;
+}
+
+/* 600-1200px---------------------------------------- */
+@media (max-width: 1200px) {
+  .order-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  .order-components {
+    width: 90%;
+  }
+  .order-result {
+    width: 90%;
+  }
+}
+
+/* 425-600px --------------------------------------- */
+
+@media (max-width: 600px) {
+}
+
+/* 0-425px --------------------------------------- */
+@media (max-width: 425px) {
+}

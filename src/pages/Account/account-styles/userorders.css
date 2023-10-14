@@ -1,0 +1,64 @@
+.userorders {
+  width: 80%;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+.inactive {
+  display: none;
+  opacity: 0;
+}
+/* --------------------- */
+
+.user-orders-title {
+  width: 100%;
+  height: 40px;
+  background-color: var(--darkGray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  border-radius: 5px;
+  position: relative;
+}
+.user-orders-title .title {
+  text-align: center;
+}
+.user-orders-title .back-button {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 5%;
+  font-size: var(--large);
+}
+
+/* --------------------- */
+.order-list {
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.order {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--bgBody);
+  border-radius: 10px;
+}
+.order div {
+  width: 60%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

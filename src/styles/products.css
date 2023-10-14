@@ -1,0 +1,311 @@
+.products {
+  width: 100%;
+  min-height: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bgBody);
+}
+.products-body {
+  width: 80%;
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+.products-main {
+  width: 100%;
+  min-height: 900px;
+  display: flex;
+  justify-content: space-between;
+}
+.products-main-title {
+  width: 100%;
+  height: 150px;
+  background-color: var(--black);
+  color: var(--white);
+  font-weight: bolder;
+  font-size: var(--xxlarge);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+/* ----------------------- ---------------------------------------*/
+.products-filter {
+  width: 20%;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+.products-filter .category-filter {
+  width: 80%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 45px;
+}
+.category-filter .category-title {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid var(--darkGray);
+  font-weight: bold;
+  font-size: var(--large);
+}
+.category-filter .category-single {
+  width: 80%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.category-single p {
+  margin-left: 5px;
+  font-size: var(--medium);
+}
+.category-single input {
+  width: 20px;
+  height: 20px;
+}
+/* ------------------------- */
+.price-filter {
+  width: 80%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 75px;
+}
+.price-filter .price-title {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid var(--darkGray);
+  font-weight: bold;
+  font-size: var(--large);
+}
+.price-single {
+  width: 80%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.price-single input {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+/* ------------------------- */
+/* .color {
+  width: 80%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 75px;
+}
+.color .color-title {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid var(--darkGray);
+  font-weight: bold;
+  font-size: var(--large);
+}
+.color-range {
+  width: 80%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.single-color {
+  width: 45px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin: 2px;
+  cursor: pointer;
+  border: none;
+}
+#red {
+  background-color: darkred;
+}
+#blue {
+  background-color: darkblue;
+}
+#green {
+  background-color: darkgreen;
+}
+#yellow {
+  background-color: gold;
+}
+#black {
+  background-color: black;
+} */
+/* ----------------------- ---------------------------------------*/
+
+.products-list {
+  width: 77%;
+  min-height: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 100px;
+}
+
+.products-list .product {
+  width: 320px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--white);
+  margin-top: 40px;
+  transition: all 0.5s;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.products-list .product:hover {
+  box-shadow: 2px 2px 10px var(--darkGray);
+}
+.product-image {
+  width: 100%;
+  height: 73%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-image img {
+  max-width: 80%;
+  max-height: 80%;
+}
+.product-info {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+.product-info .product-price {
+  font-size: var(--large);
+  font-weight: bold;
+  color: var(--darkGray);
+}
+.product-info .product-name {
+  width: 80%;
+  font-size: var(--large);
+  font-weight: bold;
+  color: var(--black);
+  text-align: center;
+}
+.product-info .product-category {
+  width: 80%;
+  font-size: var(--small);
+  font-weight: bold;
+  color: var(--lightGray);
+  text-align: center;
+}
+.product-info .product-add-basket-btn {
+  width: 90%;
+  height: 30px;
+  border: 1px solid var(--red);
+  background-color: var(--white);
+  transition: all 1s;
+  cursor: pointer;
+}
+.product-info .product-add-basket-btn:hover {
+  border-color: var(--red);
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.product-info .product-already-in-basket-btn {
+  width: 90%;
+  height: 30px;
+  border: 1px solid var(--darkGray);
+  background-color: var(--darkGray);
+  color: var(--white);
+  transition: all 1s;
+  cursor: auto;
+  border-radius: 5px;
+}
+
+@media (max-width: 1800px) {
+  .filter-icon {
+    display: none;
+  }
+}
+
+/* 600-1200px --------------------------------------- */
+@media (max-width: 1200px) {
+  .filter-icon {
+    display: none;
+  }
+}
+
+/* 425-600px --------------------------------------- */
+
+@media (max-width: 600px) {
+  .filter-icon {
+    position: absolute;
+    display: block;
+    font-size: var(--large);
+    top: 55%;
+    left: 10%;
+    cursor: pointer;
+  }
+
+  .products-main {
+    justify-content: center;
+  }
+  .products-filter {
+    position: absolute;
+    left: -100px;
+    transition: 0.5s all;
+  }
+  .open-filter {
+    width: 350px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    background-color: var(--white);
+    top: 510px;
+    left: 0px;
+    transition: 0.5s all;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px var(--darkGray);
+  }
+  .open-filter div {
+    width: 80%;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+  }
+  .open-filter div div {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .open-filter div div p {
+    width: 80px;
+  }
+}
+
+/* 0-425px --------------------------------------- */
+@media (max-width: 425px) {
+}

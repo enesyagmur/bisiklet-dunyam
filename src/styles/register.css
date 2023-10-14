@@ -1,0 +1,81 @@
+.register {
+  width: 100%;
+  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* ------------------------ */
+.register-main {
+  width: 550px;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid var(--red);
+  margin-top: 100px;
+  border-radius: 20px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.register-main:hover {
+  box-shadow: 1px 1px 5px var(--red);
+}
+.register-main .register-title {
+  font-size: var(--xxlarge);
+  color: var(--black);
+  font-weight: bold;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.register-main input {
+  width: 70%;
+  height: 50px;
+  padding: 3px;
+}
+.register-btn {
+  width: 70%;
+  height: 50px;
+  background-color: var(--black);
+  color: var(--white);
+  cursor: pointer;
+}
+.other-register-methods {
+  width: 72%;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+.other-register-methods button {
+  width: 47%;
+  height: 100%;
+  background-color: var(--lightGray);
+  border: none;
+  cursor: pointer;
+  font-size: var(--xlarge);
+}
+/* ------------------------ */
+
+.go-register-title {
+  margin-top: 50px;
+  cursor: pointer;
+  color: var(--darkGray);
+}
+
+/* 600-1200px --------------------------------------- */
+@media (max-width: 1200px) {
+}
+
+/* 425-600px --------------------------------------- */
+
+@media (max-width: 600px) {
+  .register-main {
+    width: 90%;
+  }
+}
+
+/* 0-425px --------------------------------------- */
+@media (max-width: 425px) {
+}

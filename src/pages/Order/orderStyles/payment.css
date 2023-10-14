@@ -1,0 +1,52 @@
+.pay-methods {
+  width: 80%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.pay-methods-title {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--darkGray);
+  color: var(--white);
+  border-radius: 10px;
+}
+.pay-methods .methods {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pay-methods .methods div {
+  width: 45%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid var(--darkGray);
+  margin: 10px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.invalid-method {
+  opacity: 0.3;
+  color: var(--darkGray);
+  border: 0.5px solid var(--lightGray);
+}
+.valid-method {
+  border-color: var(--red);
+}
+
+.pay-methods-icon {
+  font-size: var(--xxlarge);
+  color: var(--red);
+  font-weight: bold;
+}

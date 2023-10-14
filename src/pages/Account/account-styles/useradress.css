@@ -1,0 +1,86 @@
+.useradress {
+  width: 80%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+/* ------------------ */
+.user-adress-title {
+  width: 100%;
+  height: 40px;
+  background-color: var(--darkGray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  border-radius: 5px;
+  position: relative;
+}
+.user-adress-title .title {
+  text-align: center;
+}
+.user-adress-title .back-button {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 5%;
+  font-size: var(--large);
+}
+/* ------------------ */
+.inactive {
+  display: none;
+  opacity: 0;
+}
+
+.save-adress input {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--bgBody);
+}
+
+.save-adress {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.save-adress button {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  border: 1px solid var(--darkGray);
+  background-color: var(--lightGray);
+  cursor: pointer;
+}
+.save-adress button:hover {
+  background-color: var(--darkGray);
+  color: var(--lightGray);
+}
+
+.adress-list {
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.adress-list .adress {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10px;
+  background-color: var(--bgBody);
+}

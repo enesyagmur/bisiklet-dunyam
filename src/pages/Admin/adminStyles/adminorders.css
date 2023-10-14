@@ -1,0 +1,26 @@
+.admin-order-list {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: var(--bgBody);
+}
+.admin-order {
+  width: 80%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: var(--white);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.admin-order:hover {
+  background-color: var(--lightGray);
+}
+
+/* ----------------------- */

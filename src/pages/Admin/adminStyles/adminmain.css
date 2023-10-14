@@ -1,0 +1,25 @@
+.admin-page {
+  width: 100%;
+  min-height: 823px;
+  display: flex;
+}
+.admin-page-main {
+  width: 80%;
+  min-height: 823px;
+  background-color: var(--bgBody);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* 600-1200px --------------------------------------- */
+@media (max-width: 1200px) {
+}
+
+/* 425-600px --------------------------------------- */
+@media (max-width: 600px) {
+}
+
+/* 0-425px --------------------------------------- */
+@media (max-width: 425px) {
+}
