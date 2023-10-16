@@ -34,20 +34,7 @@
 .header-icons .icon:hover {
   color: var(--black);
 }
-.basket-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.basket-count {
-  position: absolute;
-  color: var(--red);
-  font-size: x-small;
-  font-weight: bold;
-  right: 7%;
-  top: 6%;
-}
+
 .header-top .bike {
   width: 4%;
   margin-top: 30px;
@@ -98,6 +85,10 @@
   }
   .bike {
     display: none;
+  }
+  .header-bottom {
+    border-top: 0px;
+    border-bottom: 2px solid var(--darkGray);
   }
 }
 

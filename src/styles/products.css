@@ -100,52 +100,6 @@
   margin-right: 5px;
 }
 
-/* ------------------------- */
-/* .color {
-  width: 80%;
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 75px;
-}
-.color .color-title {
-  width: 100%;
-  height: 50px;
-  border-bottom: 1px solid var(--darkGray);
-  font-weight: bold;
-  font-size: var(--large);
-}
-.color-range {
-  width: 80%;
-  height: 80px;
-  display: flex;
-  align-items: center;
-}
-.single-color {
-  width: 45px;
-  height: 35px;
-  border-radius: 50%;
-  border: 1px solid black;
-  margin: 2px;
-  cursor: pointer;
-  border: none;
-}
-#red {
-  background-color: darkred;
-}
-#blue {
-  background-color: darkblue;
-}
-#green {
-  background-color: darkgreen;
-}
-#yellow {
-  background-color: gold;
-}
-#black {
-  background-color: black;
-} */
 /* ----------------------- ---------------------------------------*/
 
 .products-list {

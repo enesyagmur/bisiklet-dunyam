@@ -9,6 +9,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../Firebase";
 import { useParams } from "react-router-dom";
 import { BsFilterCircleFill } from "react-icons/bs";
+import BasketIcon from "../components/BasketIcon";
 
 const Products = () => {
   const basket = useSelector((state) => state.basket.basketProducts);
@@ -175,6 +176,7 @@ const Products = () => {
   return (
     <div className="products">
       <Header />
+      <BasketIcon />
       <div className="products-body">
         <p className="products-main-title">ÜRÜNLER</p>
 
@@ -295,19 +297,9 @@ const Products = () => {
               </div>
             </div>
             {/* ------------------ */}
-            {/* <div className="color">
-              <p className="color-title">Renkler</p>
-              <div className="color-range">
-                <div className="single-color" id="red"></div>
-                <div className="single-color" id="blue"></div>
-                <div className="single-color" id="green"></div>
-                <div className="single-color" id="yellow"></div>
-                <div className="single-color" id="black"></div>
-              </div>
-            </div> */}
           </div>
           {/* Product-List------------------------------------------------------------ */}
-          <div className="products-list">
+          <div className="products-list" onClick={() => setOpenFilter(false)}>
             {cloneProducts
               ? cloneProducts.map((product) => (
                   <div className="product">

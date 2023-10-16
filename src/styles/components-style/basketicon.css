@@ -1,39 +1,43 @@
-.scrollbutton {
+.basket-icon {
   width: 50px;
   height: 50px;
-  background-color: var(--red);
-  border-radius: 50%;
   position: fixed;
-  color: var(--white);
+  top: 20px;
   right: 10px;
-  bottom: 20px;
+  border-radius: 50%;
+  background-color: var(--darkGray);
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--xlarge);
   cursor: pointer;
+  transition: all 0.5s;
 }
-
-.scrollbutton:hover {
-  background-color: black;
+.basket-icon:hover {
+  background-color: var(--black);
 }
-
+.basket-count {
+  position: absolute;
+  color: var(--red);
+  font-size: var(--xsmall);
+  font-weight: bold;
+  right: 15%;
+  top: 6%;
+}
 /* 600-1200px --------------------------------------- */
 @media (max-width: 1200px) {
-  .scrollbutton {
+  .basket-icon {
     width: 40px;
     height: 40px;
-    font-size: var(--large);
   }
 }
 
 /* 425-600px --------------------------------------- */
 
 @media (max-width: 600px) {
-  .scrollbutton {
+  .basket-icon {
     width: 35px;
     height: 35px;
-    font-size: var(--medium);
   }
 }
 

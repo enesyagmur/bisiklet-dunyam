@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import WishList from "../components/WishList";
 import AdviceProducts from "../components/AdviceProducts";
 import ScrollButton from "../components/ScrollButton";
+import BasketIcon from "../components/BasketIcon";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <Slider />
       <Category />
       <AdviceProducts />
+      <BasketIcon />
       <WishList />
       <Map />
       <ScrollButton />
