@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "../account-styles/useradress.css";
 import { BiArrowBack } from "react-icons/bi";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+} from "firebase/firestore";
 import { auth, db } from "../../../Firebase";
+import { HiLocationMarker } from "react-icons/hi";
+import { RxCross1 } from "react-icons/rx";
 
 const UserAdress = ({ dropdownShow, setDropdownShow }) => {
   const [inputAdressTitle, setInputAdressTitle] = useState("");
@@ -12,6 +20,7 @@ const UserAdress = ({ dropdownShow, setDropdownShow }) => {
   const [inputNeighborhood, setInputNeighborhood] = useState("");
   const [inputCountry, setInputCountry] = useState("");
   const [inputCity, setInputCity] = useState("");
+  const [inputPhone, setInputPhone] = useState("");
   const [inputDescription, setInputDescription] = useState("");
   const [userAdress, setUserAdress] = useState(["boş"]);
 
@@ -28,16 +37,20 @@ const UserAdress = ({ dropdownShow, setDropdownShow }) => {
           adressCountry: inputCountry,
           adressCity: inputCity,
           adressDescription: inputDescription,
+          userPhone: inputPhone,
           userEmail: auth.currentUser.email,
           userId: auth.currentUser.uid,
         });
+
         alert("adres kayıt edildi");
+        getAdressFunc();
       } catch (err) {
         alert(err);
       }
     }
   };
 
+  //db den adres getirme
   const getAdressFunc = async () => {
     const usersAdress = await getDocs(collection(db, "usersAdress"));
     const adressData = usersAdress.docs.map((doc) => ({
@@ -56,6 +69,29 @@ const UserAdress = ({ dropdownShow, setDropdownShow }) => {
     getAdressFunc();
   }, []);
 
+  //adres silme
+  const deleteAdressFunc = async (id) => {
+    const adressDoc = doc(db, "usersAdress", id);
+    await deleteDoc(adressDoc);
+    alert("adresiniz silindi");
+    inputsClear();
+    getAdressFunc();
+    setDropdownShow(0);
+  };
+
+  const inputsClear = () => {
+    setInputAdressTitle("");
+    setInputStreet("");
+    setInputBuild("");
+    setInputHouse("");
+    setInputNeighborhood("");
+    setInputCountry("");
+    setInputCity("");
+    setInputPhone("");
+    setInputDescription("");
+    setUserAdress(["boş"]);
+  };
+
   return (
     <div
       className={
@@ -66,7 +102,7 @@ const UserAdress = ({ dropdownShow, setDropdownShow }) => {
         <p className="back-button">
           <BiArrowBack onClick={() => setDropdownShow(0)} />
         </p>
-
+        <HiLocationMarker />
         <p className="title">Adres Bilgilerim</p>
       </div>
       <div className={userAdress[0] ? "inactive" : "save-adress"}>
@@ -112,6 +148,12 @@ const UserAdress = ({ dropdownShow, setDropdownShow }) => {
           onChange={(e) => setInputCity(e.target.value)}
           value={inputCity}
         />
+        <input
+          type="text"
+          placeholder="Telefon"
+          onChange={(e) => setInputPhone(e.target.value)}
+          value={inputPhone}
+        />
 
         <input
           type="text"
@@ -129,13 +171,18 @@ const UserAdress = ({ dropdownShow, setDropdownShow }) => {
       <div className={userAdress[0] ? "adress-list" : "inactive"}>
         {userAdress[0] ? (
           <div className="adress">
-            <p> {userAdress[0].adressTitle} </p>
+            <p>{userAdress[0].adressTitle} </p>
+            <RxCross1
+              className="delete-adress-icon"
+              onClick={() => deleteAdressFunc(userAdress[0].id)}
+            />
             <p>
               {userAdress[0].adressStreet} /{userAdress[0].adressBuild} /{" "}
               {userAdress[0].adressHouse} /{userAdress[0].adressNeighborhood} /{" "}
               {userAdress[0].adressCountry} /{userAdress[0].adressCity} /{" "}
               {userAdress[0].adressDescription}
             </p>
+            <p>{userAdress[0].userPhone}</p>
           </div>
         ) : null}
       </div>

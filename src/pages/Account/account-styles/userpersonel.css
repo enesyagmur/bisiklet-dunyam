@@ -39,6 +39,7 @@
   position: absolute;
   left: 5%;
   font-size: var(--large);
+  cursor: pointer;
 }
 /* /--------------------------- */
 .user-personel-info-show {
@@ -47,7 +48,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 .user-personel-info-show p {
   width: 100%;
@@ -58,16 +59,28 @@
   border-radius: 5px;
   background-color: var(--lightGray);
   position: relative;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .change-personel-info-icon {
   position: absolute;
   right: 5%;
   font-size: var(--small);
-  color: var(--darkGray);
+  color: var(--black);
   cursor: pointer;
 }
 .change-personel-info-icon:hover {
   color: var(--black);
+}
+
+.delete-name-icon {
+  position: absolute;
+  right: 5%;
+  cursor: pointer;
+  color: var(--black);
+}
+.delete-name-icon:hover {
+  color: var(--red);
 }
 
 /* /--------------------------- */

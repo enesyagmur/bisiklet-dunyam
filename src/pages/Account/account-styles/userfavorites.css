@@ -34,6 +34,7 @@
   position: absolute;
   left: 5%;
   font-size: var(--large);
+  cursor: pointer;
 }
 /* ------------------ */
 .favorites {
@@ -42,7 +43,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .favorites .favori {
@@ -52,4 +53,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.favorites .favori:hover {
+  background-color: var(--darkGray);
+  color: var(--white);
+}
+.delete-favori-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+.delete-favori-icon:hover {
+  color: var(--red);
 }

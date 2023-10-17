@@ -10,6 +10,10 @@ import UserAdress from "./account-components/UserAdress";
 import UserOrders from "./account-components/UserOrders";
 import UserFavorites from "./account-components/userFavorites";
 import { FaUserAlt } from "react-icons/fa";
+import { RiProfileFill } from "react-icons/ri";
+import { HiLocationMarker } from "react-icons/hi";
+import { RiBillFill } from "react-icons/ri";
+import { MdFavorite } from "react-icons/md";
 
 const Account = () => {
   const [dropdownShow, setDropdownShow] = useState(0);
@@ -40,17 +44,17 @@ const Account = () => {
             dropdownShow === 0 ? "user-info active" : "user-info inactive"
           }
         >
-          <p className="user-personel" onClick={() => setDropdownShow(1)}>
-            Bilgilerim
+          <p onClick={() => setDropdownShow(1)}>
+            <RiProfileFill className="account-icon" /> Bilgilerim
           </p>
-          <p className="user-adress" onClick={() => setDropdownShow(2)}>
-            Adreslerim
+          <p className="" onClick={() => setDropdownShow(2)}>
+            <HiLocationMarker className="account-icon" /> Adreslerim
           </p>
-          <p className="user-orders" onClick={() => setDropdownShow(3)}>
-            Siparişlerim
+          <p onClick={() => setDropdownShow(3)}>
+            <RiBillFill className="account-icon" /> Siparişlerim
           </p>
-          <p className="user-favorites" onClick={() => setDropdownShow(4)}>
-            Favorilerim
+          <p onClick={() => setDropdownShow(4)}>
+            <MdFavorite className="account-icon" /> Favorilerim
           </p>
         </div>
 

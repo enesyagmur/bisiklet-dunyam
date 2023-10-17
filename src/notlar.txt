@@ -6,7 +6,7 @@ Home -------------------------------
  -geri bildirim: +, slider düzgün çalışmıyor
  -istek listesi : +
  -harita : +, daha güzel olabilir
- -resposive: yapılmadı
+ -resposive: +
 
 Account-------------------------------
  bilgi kayıt : +
@@ -15,7 +15,7 @@ Account-------------------------------
  birden fazla adress kayıt : yapılmadı
  siparişlerim: gösterim: kısmen, sipariş iptali : yapılmadı, değerlendirme : yapılmadı,
  favorilerim : gösterim : kısmen, silme : yapılmadı
- -resposive: yapılmadı
+ -resposive: +
 
  çıkış : +
 
@@ -28,8 +28,8 @@ Adminpanel-------------------------------
  -şikayetler : yapılmadı
  -istek listesi : yapılmadı
  -iade iptallerin görünümü: yapılmadı
- -çıkış : yapılmadı
- -resposive: yapılmadı
+ -çıkış : +
+ -resposive: +
 
 
 Ürünler-------------------------------
@@ -39,20 +39,20 @@ Adminpanel-------------------------------
  -color filter : yapılmadı
  -searchbar: yapılmadı
  -iki filter ın beraber çalışması: yapılmadı
- -resposive: yapılmadı
+ -resposive: +
 
 İletişim-------------------------------
  -social medya linkler : yapılmadı
  -iletişim formu : yapılmadı
  -dükkan görseli: +, daha fazla ve daha iyisi çekilebilir
- -resposive: yapılmadı
+ -resposive: +
 
 Basket-------------------------------
  -Ürün listeleme : +
  -ürün silme : +
  -sepet sonucu gösterme : +
  -sepette ürün sayısı arttırıp azaltma : yapılmadı
- -resposive: yapılmadı
+ -resposive: +
 
 Sipariş oluşturma-------------------------------
   -sayfa görünümü : düzeltilmeli
@@ -61,20 +61,21 @@ Sipariş oluşturma-------------------------------
   -ödeme alma: yapılmadı
   -iban gösterme:+
   -sipariş oluşturuldu sayfası: yapılmadı
+  -responsive:+
 
 Login-------------------------------
  -giriş : +
  -google giriş : +
  -facebook giriş: yapılmadı
  -şifremi unuttum: yapılmadı
- -resposive: yapılmadı
+ -resposive: +
 
 
 Register-------------------------------
  -Kayıt : +
  -google kayıt : +
  -facebook giriş: yapılmadı
- -resposive: yapılmadı
+ -resposive: +
 
 
 
@@ -83,18 +84,18 @@ Componentler : *****************************************************************
 Header _ _ _ _ _ _ _ :
 -link yönlendirme : +
 -animasyon responsive : yapılmadı
--resposive: yapılmadı
+-resposive: +
 
 
 Footer_ _ _ _ _ _ _ :
 -link yönlendirmeleri : yapılmadı
--resposive: yapılmadı
+-resposive: +
 
 
 Scroolbutton _ _ _ _ _ _ _ :
 -ekran yukarıda ise gizleme : yapılmadı
 -tıklayınca yukarı götürme: +
--resposive: yapılmadı
+-resposive: +
 
 
 Güvenlik:
@@ -105,7 +106,20 @@ Güvenlik:
 
 
 Son Durum : ////////////////////////////////////////////////////////
-Header ve ürünler filter bölümü + admin panel dışında tüm siteyi responsive yaptım
+account sayfası :
+
+bilgilerim:
+-şifre güncelleme
+
+
+siparişlerim:
+-siparişlerin db den çekilmesi
+-sadece sipariş numaraları ile listeleme tıklayınca sipariş detayına gitme
+
+favorilerim:
+-detay sayfasını yapınca ürüne yıklaynca detay sayfasına gitme
+
+
 
 
 

@@ -46,14 +46,17 @@
   width: 80%;
   height: 40px;
   border-radius: 5px;
-  justify-content: center;
   display: flex;
+  justify-content: center;
   align-items: center;
   color: var(--white);
   transition: all 0.5s;
 }
 .user-info p:hover {
   background-color: var(--lightGray);
+  color: var(--black);
+}
+.account-icon {
 }
 
 .account-body .logout-btn {

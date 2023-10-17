@@ -1,27 +1,40 @@
 import React, { useEffect, useState } from "react";
 import "../account-styles/userfavorites.css";
 import { BiArrowBack } from "react-icons/bi";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { auth, db } from "../../../Firebase";
-const UserFavorites = ({ dropdownShow, setDropdownShow }) => {
-  const [favorites, setFavorites] = useState();
+import { MdFavorite } from "react-icons/md";
+import { RxCross1 } from "react-icons/rx";
 
+const UserFavorites = ({ dropdownShow, setDropdownShow }) => {
+  const [currentUserFavorites, setcurrentUserFavorites] = useState();
+  const [allFacorites, setAllFavorites] = useState();
+
+  //favorileri db den getirip Favorites statine yollama
   const getFavoritesFunc = async () => {
     const favoritesData = await getDocs(collection(db, "favorites"));
     const favoritesProducts = favoritesData.docs.map((doc) => ({
       ...doc.data(),
       id: doc.id,
     }));
+    setAllFavorites(favoritesProducts);
+
     const newArray = favoritesProducts.filter(
       (favori) => favori.userId === auth.currentUser.uid
     );
 
-    setFavorites(newArray);
+    setcurrentUserFavorites(newArray);
   };
 
   useEffect(() => {
     getFavoritesFunc();
   }, []);
+
+  const deleteFavoriFunc = async (id) => {
+    const favoritesDoc = doc(db, "favorites", id);
+    await deleteDoc(favoritesDoc);
+    getFavoritesFunc();
+  };
 
   return (
     <div
@@ -33,15 +46,20 @@ const UserFavorites = ({ dropdownShow, setDropdownShow }) => {
         <p className="back-button">
           <BiArrowBack onClick={() => setDropdownShow(0)} />
         </p>
-
-        <p className="title">Siparişlerim</p>
+        <MdFavorite />
+        <p className="title">Favorilerim</p>
       </div>
 
       <div className="favorites">
-        {favorites
-          ? favorites.map((favori) => (
+        {currentUserFavorites
+          ? currentUserFavorites.map((favori) => (
               <div className="favori">
                 <p className="favori-product-name">{favori.productName}</p>
+
+                <RxCross1
+                  className="delete-favori-icon"
+                  onClick={() => deleteFavoriFunc(favori.id)}
+                />
               </div>
             ))
           : null}

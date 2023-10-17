@@ -3,6 +3,8 @@ import "../account-styles/userorders.css";
 import { BiArrowBack } from "react-icons/bi";
 import { collection, doc, getDocs } from "firebase/firestore";
 import { auth, db } from "../../../Firebase";
+import { RiBillFill } from "react-icons/ri";
+
 const UserOrders = ({ dropdownShow, setDropdownShow }) => {
   const [userOrders, setUserOrders] = useState("");
 
@@ -36,7 +38,7 @@ const UserOrders = ({ dropdownShow, setDropdownShow }) => {
         <p className="back-button">
           <BiArrowBack onClick={() => setDropdownShow(0)} />
         </p>
-
+        <RiBillFill />
         <p className="title">Siparişlerim</p>
       </div>
 

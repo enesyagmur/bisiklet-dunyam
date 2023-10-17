@@ -4,24 +4,27 @@ import { BiArrowBack } from "react-icons/bi";
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDocs,
-  updateDoc,
 } from "firebase/firestore";
 import { auth, db } from "../../../Firebase";
 import { useDispatch } from "react-redux";
 import { changeCurrentUserFromRedux } from "../../../redux/userSlice";
 import { BsPencil } from "react-icons/bs";
-import { updateEmail, updatePassword } from "firebase/auth";
+import { updateEmail } from "firebase/auth";
+import { RiProfileFill } from "react-icons/ri";
+import { RxCross1 } from "react-icons/rx";
 
 const UserPersonel = ({ dropdownShow, setDropdownShow }) => {
   const [inputName, setInputName] = useState("");
   const [inputSurname, setInputSurname] = useState("");
   const [findUser, setFindUser] = useState(false);
   const [openEmailReset, setOpenEmailReset] = useState(false);
-  const [inputEmail, setInputEmail] = useState("");
+  const [openPasswordReset, setOpenPasswordReset] = useState(false);
 
-  const [cloneUser, setCloneUser] = useState([]);
+  const [inputEmail, setInputEmail] = useState("");
+  const [userId, setUserId] = useState("");
   const dispatch = useDispatch();
 
   const usersInfoCollectionRef = collection(db, "usersInfo");
@@ -36,9 +39,9 @@ const UserPersonel = ({ dropdownShow, setDropdownShow }) => {
     }));
     const user = users.filter((item) => item.userId === auth.currentUser.uid);
     if (user[0]) {
-      setCloneUser(user);
       setInputName(user[0].userName);
       setInputSurname(user[0].userSurname);
+      setUserId(user[0].id);
       setFindUser(true);
       dispatch(
         changeCurrentUserFromRedux({
@@ -52,30 +55,39 @@ const UserPersonel = ({ dropdownShow, setDropdownShow }) => {
 
   //veri tabanına kullanıcı isim soy isim girme
   const addUsersInfoFunc = async () => {
-    if (cloneUser) {
-      alert("bilgiler zaten kayıtlı");
-    } else {
-      if (inputName !== "" && inputSurname !== "") {
-        try {
-          await addDoc(usersInfoCollectionRef, {
-            userName: inputName,
-            userSurname: inputSurname,
-            userEmail: auth.currentUser.email,
-            userId: auth.currentUser.uid,
-          });
-          alert("bilgiler kayıt edildi");
-        } catch (err) {
-          alert(err);
-        }
-      } else {
-        alert("bilgiler boş bırakılamaz");
+    if (inputName !== "" && inputSurname !== "") {
+      try {
+        await addDoc(usersInfoCollectionRef, {
+          userName: inputName,
+          userSurname: inputSurname,
+          userEmail: auth.currentUser.email,
+          userId: auth.currentUser.uid,
+        });
+        alert("bilgiler kayıt edildi");
+        searchUsersFunc();
+        setDropdownShow(0);
+      } catch (err) {
+        alert(err);
       }
+    } else {
+      alert("bilgiler boş bırakılamaz");
     }
   };
 
   useEffect(() => {
     searchUsersFunc();
   }, []);
+
+  //isim soyisim silme
+  const deleteNameFunc = async (id) => {
+    const usersInfoDoc = doc(db, "usersInfo", id);
+    await deleteDoc(usersInfoDoc);
+    searchUsersFunc();
+    alert(
+      "Kişisel bilgileriniz silindi, verilerin güncellenmesi için çıkış-giriş işlemi yapmanızı rica ediyoruz."
+    );
+    setDropdownShow(0);
+  };
 
   //mail güncelleme
   const updateEmailFunc = (newEmail) => {
@@ -103,13 +115,17 @@ const UserPersonel = ({ dropdownShow, setDropdownShow }) => {
         <p className="back-button">
           <BiArrowBack onClick={() => setDropdownShow(0)} />
         </p>
-
-        <p className="title">Bilgilerim</p>
+        <RiProfileFill />
+        <p className="title"> Bilgilerim</p>
       </div>
       {findUser ? (
         <div className="user-personel-info-show">
           <p className="user-personel-name">
             {inputName ? inputName : null} {inputSurname ? inputSurname : null}
+            <RxCross1
+              className="delete-name-icon"
+              onClick={() => deleteNameFunc(userId)}
+            />
           </p>
           <p className="user-personel-email">
             {auth ? auth.currentUser.email : null}
@@ -127,6 +143,26 @@ const UserPersonel = ({ dropdownShow, setDropdownShow }) => {
               />
               <button onClick={() => updateEmailFunc(inputEmail)}>
                 Email Güncelleme
+              </button>
+            </div>
+          ) : null}
+
+          <p className="user-password">
+            Şifre Değiştirme
+            <BsPencil
+              className="change-personel-info-icon"
+              onClick={() => setOpenPasswordReset(!openPasswordReset)}
+            />
+          </p>
+          {openPasswordReset ? (
+            <div className="reset-info">
+              <input
+                type="text"
+                placeholder="Yeni şifre Giriniz"
+                onChange={(e) => setInputEmail(e.target.value)}
+              />
+              <button onClick={() => updateEmailFunc(inputEmail)}>
+                Şifre Güncelleme
               </button>
             </div>
           ) : null}
