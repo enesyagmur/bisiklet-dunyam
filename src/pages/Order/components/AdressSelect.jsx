@@ -31,10 +31,6 @@ const AdressSelect = ({ setAdress, deliveryType, setDeliveryType }) => {
     }
   };
 
-  const changeDeliveryTypeFunc = (x) => {
-    setDeliveryType(x);
-  };
-
   useEffect(() => {
     getAdressFunc();
   }, []);

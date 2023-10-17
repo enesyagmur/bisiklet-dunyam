@@ -7,6 +7,8 @@ import { RiBillFill } from "react-icons/ri";
 
 const UserOrders = ({ dropdownShow, setDropdownShow }) => {
   const [userOrders, setUserOrders] = useState("");
+  const [order, setOrder] = useState();
+  const [openOrderDetail, setOpenOrderDetail] = useState(false);
 
   const getCurrentUserOrdersFunc = async () => {
     const ordersData = await getDocs(collection(db, "orders"));
@@ -15,7 +17,7 @@ const UserOrders = ({ dropdownShow, setDropdownShow }) => {
       id: doc.id,
     }));
 
-    const newArray = orders.find(
+    const newArray = orders.filter(
       (order) => order.orderCreaterId === auth.currentUser.uid
     );
 
@@ -28,6 +30,19 @@ const UserOrders = ({ dropdownShow, setDropdownShow }) => {
     getCurrentUserOrdersFunc();
   }, []);
 
+  const showOrderDetailFunc = (order) => {
+    setOpenOrderDetail(true);
+    setOrder(order);
+  };
+
+  const backFunc = () => {
+    if (openOrderDetail === true) {
+      setOpenOrderDetail(false);
+    } else {
+      setDropdownShow(0);
+    }
+  };
+
   return (
     <div
       className={
@@ -36,51 +51,58 @@ const UserOrders = ({ dropdownShow, setDropdownShow }) => {
     >
       <div className="user-orders-title">
         <p className="back-button">
-          <BiArrowBack onClick={() => setDropdownShow(0)} />
+          <BiArrowBack onClick={backFunc} />
         </p>
         <RiBillFill />
         <p className="title">Siparişlerim</p>
       </div>
-
-      <div className="order-list">
+      {/* Order List-----------------------------------------------------  */}
+      <div className={openOrderDetail ? "inactive" : "order-list"}>
         {userOrders ? (
-          <div className="order">
-            <div className="order-number">
-              <label htmlFor="">Sipariş Numarası :</label>
-              {userOrders.orderNumber}
-            </div>
-
-            <div className="order-status">
-              <label htmlFor=""> Sipariş Durumu : </label>
-              {userOrders.orderStatus}
-            </div>
-            <div className="order-product-date">
-              <label htmlFor=""> Sipariş Tarihi:</label>
-              {userOrders.orderCreateTime}
-            </div>
-
-            <div className="order-product-info">
-              <p className="order-product-name">
-                {userOrders.orderProducts[0].productName}
+          userOrders.map((order) => (
+            <div className="order" onClick={() => showOrderDetailFunc(order)}>
+              <p className="orderNumber">
+                Sipariş numarası #{order.orderNumber}
               </p>
-              <p className="order-product-price">
-                {userOrders.orderProducts[0].productPrice} TL
-              </p>
+              <p className="orderDate">{order.orderCreateTime}</p>
             </div>
-
-            <div className="order-product-info">
-              <p className="order-product-name">
-                {userOrders.orderProducts[1].productName}
-              </p>
-              <p className="order-product-price">
-                {userOrders.orderProducts[1].productPrice} TL
-              </p>
-            </div>
-
-            <p className="order-total">{userOrders.orderTotal} TL</p>
-          </div>
-        ) : null}
+          ))
+        ) : (
+          <p>Siparişiniz Bulunmuyor</p>
+        )}
       </div>
+
+      {/* Order detay ----------------------------------------------- */}
+      {order ? (
+        <div className={openOrderDetail ? "account-order-detail" : "inactive"}>
+          <div className="order-detail-title">
+            <p className="orderNumber">Sipariş numarası #{order.orderNumber}</p>
+            <p className="orderDate"> Tarih : {order.orderCreateTime}</p>
+          </div>
+          <div className="order-detail-products">
+            {order.orderProducts.map((order) => (
+              <div className="order-detail-single-order">
+                <img src={order.productImage} alt="" />
+                <p>{order.productName}</p>
+                <p>{order.productPrice} TL</p>
+              </div>
+            ))}
+          </div>
+          <div className="order-detail-adress">
+            <p>
+              Sokak : {order.orderAdress[0].adressStreet} / Bina:{" "}
+              {order.orderAdress[0].adressBuild} / Daire :{" "}
+              {order.orderAdress[0].adressHouse} / Mahalle :{" "}
+              {order.orderAdress[0].adressNeighborhood} / Semt :{" "}
+              {order.orderAdress[0].adressCountry} / Şehir :{" "}
+              {order.orderAdress[0].adressCity} / Tarif:{" "}
+              {order.orderAdress[0].adressDescription}
+            </p>
+            <p>Telefon :{order.orderAdress[0].userPhone}</p>
+          </div>
+          <p className="order-detail-total">Toplam : {order.orderTotal} TL</p>
+        </div>
+      ) : null}
     </div>
   );
 };

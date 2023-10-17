@@ -33,6 +33,7 @@ const OrderCreate = () => {
   }, []);
 
   const createOrderFunc = async () => {
+    var now = new Date().toLocaleString(`tr-TR`);
     if (randomNumber !== 0) {
       if (contract === true) {
         try {
@@ -43,7 +44,7 @@ const OrderCreate = () => {
             orderProducts: basket,
             orderCreaterId: auth.currentUser.uid,
             orderUserInfo: userInfo,
-            orderCreateTime: "23.09.2023 08:05",
+            orderCreateTime: now,
             orderStatus: "Ödeme Bekleniyor",
           });
           alert("siparişiniz oluşturuldu");

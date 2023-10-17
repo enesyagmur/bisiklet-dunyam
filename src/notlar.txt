@@ -108,10 +108,12 @@ Güvenlik:
 Son Durum : ////////////////////////////////////////////////////////
 account sayfası :
 
+sipariş oluşturma:
+-eğer şubeden alınacak şekilde seçtiyse order adresi siparişe kayıt etmeye gerek yok
+ sadece telefon alınması yeterli
 
 siparişlerim:
--siparişlerin db den çekilmesi
--sadece sipariş numaraları ile listeleme tıklayınca sipariş detayına gitme
+tek siparişte çok fazla ürün olunca sayfaya sığmıyor
 
 favorilerim:
 -detay sayfasını yapınca ürüne yıklaynca detay sayfasına gitme
