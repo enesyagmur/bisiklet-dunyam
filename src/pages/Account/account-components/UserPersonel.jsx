@@ -21,8 +21,6 @@ const UserPersonel = ({ dropdownShow, setDropdownShow }) => {
   const [inputSurname, setInputSurname] = useState("");
   const [findUser, setFindUser] = useState(false);
   const [openEmailReset, setOpenEmailReset] = useState(false);
-  const [openPasswordReset, setOpenPasswordReset] = useState(false);
-
   const [inputEmail, setInputEmail] = useState("");
   const [userId, setUserId] = useState("");
   const dispatch = useDispatch();
@@ -143,26 +141,6 @@ const UserPersonel = ({ dropdownShow, setDropdownShow }) => {
               />
               <button onClick={() => updateEmailFunc(inputEmail)}>
                 Email Güncelleme
-              </button>
-            </div>
-          ) : null}
-
-          <p className="user-password">
-            Şifre Değiştirme
-            <BsPencil
-              className="change-personel-info-icon"
-              onClick={() => setOpenPasswordReset(!openPasswordReset)}
-            />
-          </p>
-          {openPasswordReset ? (
-            <div className="reset-info">
-              <input
-                type="text"
-                placeholder="Yeni şifre Giriniz"
-                onChange={(e) => setInputEmail(e.target.value)}
-              />
-              <button onClick={() => updateEmailFunc(inputEmail)}>
-                Şifre Güncelleme
               </button>
             </div>
           ) : null}

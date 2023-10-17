@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
 }
-/* ------------------------ */
+/* Login page ----------------------------------------------- */
 .login-main {
   width: 550px;
   height: 550px;
@@ -16,7 +16,7 @@
   border: 1px solid var(--red);
   margin-top: 100px;
   border-radius: 20px;
-  transition: all 0.5s;
+  transition: all 0.3s;
   cursor: pointer;
 }
 .login-main:hover {
@@ -41,7 +41,15 @@
   background-color: var(--black);
   color: var(--white);
   cursor: pointer;
+  transition: all 0.5s;
 }
+
+.login-btn:hover {
+  background-color: var(--darkGray);
+  color: var(--black);
+  border: none;
+}
+
 .other-login-methods {
   width: 72%;
   height: 50px;
@@ -62,6 +70,50 @@
   margin-top: 50px;
   cursor: pointer;
   color: var(--darkGray);
+}
+
+.inactive {
+  display: none;
+}
+
+/* --Pasword Reset------------------------------------------- */
+.password-reset {
+  width: 550px;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid var(--red);
+  margin-top: 100px;
+  border-radius: 20px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.password-reset:hover {
+  box-shadow: 1px 1px 5px var(--red);
+}
+.password-reset .password-reset-title {
+  font-size: var(--xxlarge);
+  color: var(--black);
+  font-weight: bold;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.password-reset input {
+  width: 70%;
+  height: 50px;
+  padding: 3px;
+}
+
+.password-reset button {
+  transition: all 0.5s;
+}
+.password-reset button:hover {
+  background-color: var(--darkGray);
+  color: var(--black);
+  border: none;
 }
 
 /* 600-1200px --------------------------------------- */

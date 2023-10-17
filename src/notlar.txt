@@ -108,9 +108,6 @@ Güvenlik:
 Son Durum : ////////////////////////////////////////////////////////
 account sayfası :
 
-bilgilerim:
--şifre güncelleme
-
 
 siparişlerim:
 -siparişlerin db den çekilmesi
@@ -118,6 +115,9 @@ siparişlerim:
 
 favorilerim:
 -detay sayfasını yapınca ürüne yıklaynca detay sayfasına gitme
+
+admin panel:
+-style düzenlemesi
 
 
 
