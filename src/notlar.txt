@@ -116,7 +116,7 @@ siparişlerim:
 tek siparişte çok fazla ürün olunca sayfaya sığmıyor
 
 favorilerim:
--detay sayfasını yapınca ürüne yıklaynca detay sayfasına gitme
+-detay sayfasını yapınca ürüne tıklaynca detay sayfasına gitme
 
 admin panel:
 -style düzenlemesi

@@ -16,6 +16,7 @@ import { db } from "./Firebase";
 import { useDispatch } from "react-redux";
 import { addProductsToRedux } from "./redux/productsSlice";
 import AdminOrderDetail from "./pages/Admin/AdminOrderDetail";
+import UserOrderDetail from "./pages/Account/account-components/UserOrderDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +51,10 @@ function App() {
           <Route
             path="/adminorderdetail/:ordernumber"
             element={<AdminOrderDetail />}
+          />
+          <Route
+            path="/userorderdetail/:ordernumber"
+            element={<UserOrderDetail />}
           />
         </Routes>
       </BrowserRouter>
