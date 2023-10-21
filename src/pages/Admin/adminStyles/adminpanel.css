@@ -1,6 +1,6 @@
 .adminpanel {
   width: 20%;
-  min-height: 100%;
+  min-height: 100vh;
   background-color: var(--darkGray);
   display: flex;
   flex-direction: column;
@@ -16,17 +16,27 @@
   position: sticky;
   top: 0;
 }
-.adminpanel-pages p {
+.adminpanel-pages div {
   width: 80%;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: var(--large);
   background-color: var(--bgBody);
   cursor: pointer;
   transition: all 0.5s;
-}
-.adminpanel-pages p:hover {
   border-radius: 10px;
-  background-color: var(--lightGray);
+}
+.adminpanel-pages div:hover {
+  background-color: var(--darkGray);
+  color: var(--white);
+  border: 1px solid var(--white);
+}
+.adminpanel-pages p {
+  width: 70px;
+}
+
+.admin-panel-icon {
+  width: 20px;
 }

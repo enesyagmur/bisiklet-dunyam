@@ -3,9 +3,8 @@ import "../Admin/adminStyles/adminpanel.css";
 import { useNavigate } from "react-router-dom";
 import { BiSolidPackage } from "react-icons/bi";
 import { MdProductionQuantityLimits } from "react-icons/md";
-
 import { RiLogoutBoxLine } from "react-icons/ri";
-
+import { BsPlusSquareDotted } from "react-icons/bs";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase";
 
@@ -34,16 +33,23 @@ const AdminPanel = () => {
   return (
     <div className="adminpanel">
       <div className="adminpanel-pages">
-        <p onClick={() => go("adminorders")}>
-          <BiSolidPackage /> Siparişler
-        </p>
-        <p onClick={() => go("adminproducts")}>
-          <MdProductionQuantityLimits /> Ürünler
-        </p>
+        <div onClick={() => go("adminorders")}>
+          <p>Sİparişler</p>
+          <BiSolidPackage className="admin-panel-icon" />
+        </div>
+        <div onClick={() => go("adminproducts")}>
+          <p>Ürünler</p>
+          <MdProductionQuantityLimits className="admin-panel-icon" />
+        </div>
+        <div onClick={() => go("adminaddproduct")}>
+          <p>Yeni Ürün</p>
+          <BsPlusSquareDotted className="admin-panel-icon" />
+        </div>
 
-        <p onClick={logoutFunc}>
-          <RiLogoutBoxLine /> Çıkış
-        </p>
+        <div onClick={logoutFunc}>
+          <p>Çıkış</p>
+          <RiLogoutBoxLine className="admin-panel-icon" />
+        </div>
       </div>
     </div>
   );

@@ -10,13 +10,14 @@ import Contact from "./pages/Contact";
 import AdminOrders from "./pages/Admin/AdminOrders";
 import AdminProducts from "./pages/Admin/AdminProducts";
 import OrderCreate from "./pages/Order/OrderCreate";
+import AdminOrderDetail from "./pages/Admin/AdminOrderDetail";
+import UserOrderDetail from "./pages/Account/UserOrderDetail";
+import AdminAddProduct from "./pages/Admin/AdminAddProduct";
 import { useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./Firebase";
 import { useDispatch } from "react-redux";
 import { addProductsToRedux } from "./redux/productsSlice";
-import AdminOrderDetail from "./pages/Admin/AdminOrderDetail";
-import UserOrderDetail from "./pages/Account/UserOrderDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/adminorders" element={<AdminOrders />} />
           <Route path="/adminproducts" element={<AdminProducts />} />
+          <Route path="/adminaddproduct" element={<AdminAddProduct />} />
           <Route path="/ordercreate/:total" element={<OrderCreate />} />
           <Route
             path="/adminorderdetail/:ordernumber"

@@ -17,10 +17,12 @@
   margin-top: 5px;
   margin-bottom: 5px;
   cursor: pointer;
-  transition: all 0.5s;
+  transition: all 0.7s;
 }
 .admin-order:hover {
-  background-color: var(--lightGray);
+  background-color: var(--red);
+  color: var(--white);
+  border-radius: 10px;
 }
 
 /* ----------------------- */
