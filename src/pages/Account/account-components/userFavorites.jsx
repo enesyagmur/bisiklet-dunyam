@@ -8,7 +8,6 @@ import { RxCross1 } from "react-icons/rx";
 
 const UserFavorites = ({ dropdownShow, setDropdownShow }) => {
   const [currentUserFavorites, setcurrentUserFavorites] = useState();
-  const [allFacorites, setAllFavorites] = useState();
 
   //favorileri db den getirip Favorites statine yollama
   const getFavoritesFunc = async () => {
@@ -17,7 +16,6 @@ const UserFavorites = ({ dropdownShow, setDropdownShow }) => {
       ...doc.data(),
       id: doc.id,
     }));
-    setAllFavorites(favoritesProducts);
 
     const newArray = favoritesProducts.filter(
       (favori) => favori.userId === auth.currentUser.uid
@@ -54,7 +52,11 @@ const UserFavorites = ({ dropdownShow, setDropdownShow }) => {
         {currentUserFavorites
           ? currentUserFavorites.map((favori) => (
               <div className="favori">
-                <p className="favori-product-name">{favori.productName}</p>
+                <img src={favori.product.productImage} alt="" />
+                <p className="favori-product-name">
+                  {favori.product.productName}
+                </p>
+                <p>{favori.product.productPrice} TL</p>
 
                 <RxCross1
                   className="delete-favori-icon"

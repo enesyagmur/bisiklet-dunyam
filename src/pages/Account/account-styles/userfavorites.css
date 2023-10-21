@@ -48,19 +48,23 @@
 
 .favorites .favori {
   width: 100%;
-  height: 40px;
-  background-color: var(--bgBody);
+  height: 70px;
+  background-color: var(--white);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   margin-top: 5px;
   margin-bottom: 5px;
   cursor: pointer;
   transition: all 0.5s;
+  border: 1px solid var(--darkGray);
+  border-radius: 5px;
+}
+.favori img {
+  max-height: 80%;
 }
 .favorites .favori:hover {
-  background-color: var(--darkGray);
-  color: var(--white);
+  border-color: var(--red);
 }
 .delete-favori-icon {
   position: absolute;

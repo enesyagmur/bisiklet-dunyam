@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
-import "../account-styles/userOrderDetail.css";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import "../Account/account-styles/userOrderDetail.css";
 import { useParams } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../../Firebase";
+import { db } from "../../Firebase";
 
 const UserOrderDetail = () => {
   const { ordernumber } = useParams();

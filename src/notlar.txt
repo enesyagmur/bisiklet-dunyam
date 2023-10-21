@@ -112,11 +112,8 @@ sipariş oluşturma:
 -eğer şubeden alınacak şekilde seçtiyse order adresi siparişe kayıt etmeye gerek yok
  sadece telefon alınması yeterli
 
-siparişlerim:
-tek siparişte çok fazla ürün olunca sayfaya sığmıyor
-
 favorilerim:
--detay sayfasını yapınca ürüne tıklaynca detay sayfasına gitme
+-favorilerin sadece ismini gösteriyorum, favorilerin düzgün görünmesi favoriler sayfası yapma
 
 admin panel:
 -style düzenlemesi

@@ -16,7 +16,7 @@ import { db } from "./Firebase";
 import { useDispatch } from "react-redux";
 import { addProductsToRedux } from "./redux/productsSlice";
 import AdminOrderDetail from "./pages/Admin/AdminOrderDetail";
-import UserOrderDetail from "./pages/Account/account-components/UserOrderDetail";
+import UserOrderDetail from "./pages/Account/UserOrderDetail";
 
 function App() {
   const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/components-style/adviceproducts.css";
 import { useDispatch, useSelector } from "react-redux";
 import { productAddToBasket } from "../redux/basketSlice";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { auth, db } from "../Firebase";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ const AdviceProducts = () => {
   const basket = useSelector((state) => state.basket.basketProducts);
   const products = useSelector((state) => state.products.allProductsList);
   const [recommendedProducts, setRecommendedProducts] = useState([]);
+  const [userFavoritesCheck, setUserFavoritesCheck] = useState();
 
   const filterProductsFunc = () => {
     const filterProducts = products.filter(
@@ -20,19 +21,45 @@ const AdviceProducts = () => {
     setRecommendedProducts(filterProducts);
   };
 
+  const checkUserFavoriCountFunc = async () => {
+    const favoritesData = await getDocs(collection(db, "favorites"));
+    const favoritesProducts = favoritesData.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+
+    //bu kullanıcının kaç favori ürünü var ona bakıcaz
+    const newArray = favoritesProducts.filter(
+      (favori) => favori.userId === auth.currentUser.uid
+    );
+
+    if (newArray.length === 6) {
+      setUserFavoritesCheck(false);
+    } else {
+      setUserFavoritesCheck(true);
+    }
+  };
+
   useEffect(() => {
     filterProductsFunc();
+    checkUserFavoriCountFunc();
   }, [products]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const productAddFavoritesFunc = async (name) => {
+  const productAddFavoritesFunc = async (product) => {
+    checkUserFavoriCountFunc();
+
     if (auth.currentUser) {
-      await addDoc(collection(db, "favorites"), {
-        productName: name,
-        userEmail: auth.currentUser.email,
-        userId: auth.currentUser.uid,
-      });
+      if (userFavoritesCheck) {
+        await addDoc(collection(db, "favorites"), {
+          product: product,
+          userEmail: auth.currentUser.email,
+          userId: auth.currentUser.uid,
+        });
+      } else if (userFavoritesCheck !== true) {
+        alert("favorileriniz dolu");
+      }
     } else {
       navigate("/login");
     }
@@ -61,7 +88,7 @@ const AdviceProducts = () => {
               <div className="product">
                 <AiOutlineHeart
                   className="product-heart-icon"
-                  onClick={() => productAddFavoritesFunc(product.productName)}
+                  onClick={() => productAddFavoritesFunc(product)}
                 />
                 <div className="product-image">
                   <img src={product.productImage} alt="" />
