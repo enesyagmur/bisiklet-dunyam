@@ -28,15 +28,16 @@ const AdviceProducts = () => {
       id: doc.id,
     }));
 
-    //bu kullanıcının kaç favori ürünü var ona bakıcaz
-    const newArray = favoritesProducts.filter(
-      (favori) => favori.userId === auth.currentUser.uid
-    );
-
-    if (newArray.length === 6) {
-      setUserFavoritesCheck(false);
-    } else {
-      setUserFavoritesCheck(true);
+    if (auth.currentUser) {
+      //bu kullanıcının kaç favori ürünü var ona bakıcaz
+      const newArray = favoritesProducts.filter(
+        (favori) => favori.userId === auth.currentUser.uid
+      );
+      if (newArray.length === 6) {
+        setUserFavoritesCheck(false);
+      } else {
+        setUserFavoritesCheck(true);
+      }
     }
   };
 

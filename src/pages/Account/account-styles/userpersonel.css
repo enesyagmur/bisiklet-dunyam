@@ -1,6 +1,6 @@
 .userpersonel {
   width: 80%;
-  min-height: 500px;
+  height: 560px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,6 +40,9 @@
   left: 5%;
   font-size: var(--large);
   cursor: pointer;
+}
+.user-personel-title .back-button:hover {
+  color: var(--red);
 }
 /* /--------------------------- */
 .user-personel-info-show {

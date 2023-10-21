@@ -1,6 +1,6 @@
 .userorders {
   width: 80%;
-  min-height: 500px;
+  height: 560px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,6 +36,9 @@
   font-size: var(--large);
   cursor: pointer;
 }
+.user-orders-title .back-button:hover {
+  color: var(--red);
+}
 
 /* --order-list----------------------------------- */
 .order-list {
@@ -59,7 +62,7 @@
   transition: all 0.5s;
 }
 .order:hover {
-  background-color: var(--darkGray);
+  background-color: var(--red);
   color: var(--white);
 }
 

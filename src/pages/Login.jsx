@@ -6,6 +6,7 @@ import { GoogleAuthProvider, sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../Firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { BiArrowBack } from "react-icons/bi";
 
 const Login = () => {
   const [inputEmail, setInputEmail] = useState("");
@@ -73,6 +74,7 @@ const Login = () => {
   return (
     <div className="login">
       <div className={openPasswordReset ? "inactive" : "login-main"}>
+        <BiArrowBack className="back-button" onClick={() => navigate("/")} />
         <p className="login-title">Giriş Yap</p>
         <input
           type="email"

@@ -1,6 +1,6 @@
 .userfavorites {
   width: 80%;
-  min-height: 500px;
+  height: 560px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,6 +36,9 @@
   font-size: var(--large);
   cursor: pointer;
 }
+.user-favorites-title .back-button:hover {
+  color: var(--red);
+}
 /* ------------------ */
 .favorites {
   width: 100%;
@@ -57,14 +60,14 @@
   margin-bottom: 5px;
   cursor: pointer;
   transition: all 0.5s;
-  border: 1px solid var(--darkGray);
+  border: 1px solid var(--red);
   border-radius: 5px;
 }
 .favori img {
   max-height: 80%;
 }
 .favorites .favori:hover {
-  border-color: var(--red);
+  border-color: var(--black);
 }
 .delete-favori-icon {
   position: absolute;

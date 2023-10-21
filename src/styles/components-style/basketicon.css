@@ -17,12 +17,19 @@
   background-color: var(--black);
 }
 .basket-count {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   color: var(--red);
   font-size: var(--xsmall);
   font-weight: bold;
   right: 15%;
   top: 6%;
+
+  border-radius: 50%;
 }
 /* 600-1200px --------------------------------------- */
 @media (max-width: 1200px) {

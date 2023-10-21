@@ -30,6 +30,7 @@
 }
 .account-user-logo-icon {
   font-size: var(--xxlarge);
+  color: var(--white);
 }
 
 .account-body .user-info {
@@ -38,7 +39,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 .user-info p {
   cursor: pointer;
@@ -51,12 +52,15 @@
   align-items: center;
   color: var(--white);
   transition: all 0.5s;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .user-info p:hover {
   background-color: var(--lightGray);
-  color: var(--black);
+  color: var(--red);
 }
 .account-icon {
+  margin-right: 5px;
 }
 
 .account-body .logout-btn {
