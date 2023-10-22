@@ -73,7 +73,7 @@ Güvenlik:
 
 
 Son Durum : ////////////////////////////////////////////////////////
-
+admin panelde ürün düzenleme sayfası
 
 
 
