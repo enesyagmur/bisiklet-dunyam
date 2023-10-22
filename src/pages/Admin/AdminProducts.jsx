@@ -11,6 +11,8 @@ import {
 } from "firebase/firestore";
 
 import { BiLike } from "react-icons/bi";
+import { CiSquareRemove } from "react-icons/ci";
+
 import { db } from "../../Firebase";
 
 const AdminProducts = () => {
@@ -37,6 +39,8 @@ const AdminProducts = () => {
     const productsDoc = doc(db, "products", id);
     await deleteDoc(productsDoc);
     getAllProductsFunc();
+    alert("Ürün Silindi");
+    setProductSettings(false);
   };
 
   //sayfa açılınca getAllproductsFunc çalışsın
@@ -142,6 +146,10 @@ const AdminProducts = () => {
                     {selectedProduct.productRecommended ? (
                       <BiLike className="admin-product-recomended-icon" />
                     ) : null}
+                    <CiSquareRemove
+                      className="admin-product-delete-icon"
+                      onClick={() => deleteProductFromDb(selectedProduct.id)}
+                    />
                   </div>
                 </div>
               </div>
