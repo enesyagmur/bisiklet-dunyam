@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
 }
-.panel-products-title {
+.admin-products-title {
   font-size: var(--xlarge);
   font-weight: bold;
   height: 70px;
@@ -32,10 +32,8 @@
   transition: all 0.5s;
   cursor: pointer;
   border-radius: 10px;
-}
-
-.panel-single-product:hover {
   box-shadow: 2px 2px 10px var(--darkGray);
+  position: relative;
 }
 
 .product-image {
@@ -70,22 +68,87 @@
   color: var(--black);
   text-align: center;
 }
-.product-info .product-category {
+.product-info .product-stock {
   width: 80%;
   font-size: var(--small);
   font-weight: bold;
   color: var(--lightGray);
   text-align: center;
 }
+.admin-product-recomended-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  color: orange;
+}
 /*---product settings------------------------- */
 
-.product-settings {
+.product-settings-main {
   width: 80%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  background-color: var(--white);
+}
+.product-settings {
+  width: 320px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.product-settings-checkboxs {
+  width: 320px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.product-settings-checkboxs div {
+  width: 90px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid var(--darkGray);
+  border-radius: 5px;
+}
+.product-settings-checkboxs div p {
+  font-size: var(--large);
+}
+
+.product-settings-new-value {
+  width: 320px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.input-settings-new-value {
+  width: 320px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid var(--darkGray);
+  text-align: center;
+}
+.settings-update-button {
+  width: 320px;
+  height: 40px;
+  background-color: var(--black);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.settings-update-button:hover {
+  background-color: var(--darkGray);
 }
 
 /* -------------- */
