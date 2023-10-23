@@ -20,7 +20,7 @@
 
 .order-title {
   width: 100%;
-  height: 100px;
+  height: 250px;
   border-bottom: 1px solid var(--darkGray);
   border-radius: 20px;
   display: flex;
@@ -35,10 +35,15 @@
   align-items: center;
   justify-content: space-evenly;
 }
-.order-title-info {
-  font-size: var(--xlarge);
-  font-weight: bold;
+.order-title div p {
+  font-size: var(--large);
+  width: 400px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
 /* ------------------------------ */
 
 .order-products {
@@ -71,6 +76,41 @@
   height: 80%;
   display: flex;
   align-items: center;
+}
+
+/* ------------------------------------- */
+.user-order-delete {
+  width: 80%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 50px;
+  border-top: 1px solid var(--darkGray);
+  border-radius: 10px;
+}
+.user-order-delete p {
+  font-size: var(--large);
+}
+.user-order-delete input {
+  width: 250px;
+  height: 40px;
+  text-align: center;
+}
+.user-order-delete button {
+  width: 250px;
+  height: 40px;
+  background-color: var(--red);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.user-order-delete button:hover {
+  background-color: var(--black);
+  color: var(--white);
+  border-radius: 5px;
 }
 
 /* 600-1200px---------------------------------------- */

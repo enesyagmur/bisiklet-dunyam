@@ -46,6 +46,7 @@ const OrderCreate = () => {
             orderUserInfo: userInfo,
             orderCreateTime: now,
             orderStatus: "Ödeme Bekleniyor",
+            orderStatusDetail: "Ödeme Bekleniyor",
           });
           alert("siparişiniz oluşturuldu");
           setOrderInfo({
