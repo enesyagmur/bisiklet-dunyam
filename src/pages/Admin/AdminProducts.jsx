@@ -9,14 +9,15 @@ import {
   getDocs,
   updateDoc,
 } from "firebase/firestore";
-
 import { BiLike } from "react-icons/bi";
 import { CiSquareRemove } from "react-icons/ci";
+import { BiArrowBack } from "react-icons/bi";
 
 import { db } from "../../Firebase";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
+  const [cloneProducts, setCloneProducts] = useState([]);
   const [productSettings, setProductSettings] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState();
   const [inputNewProductValue, setInputNewProductValue] = useState();
@@ -31,6 +32,7 @@ const AdminProducts = () => {
         id: doc.id,
       }));
       setProducts(justProducts);
+      setCloneProducts(justProducts);
     } catch (err) {}
   };
 
@@ -91,12 +93,48 @@ const AdminProducts = () => {
     }
   };
 
+  // tıklanan kategoriye gore filitreleme
+  const categoryFilterFunc = (kategori) => {
+    if (kategori === "bisiklet") {
+      const newArray = cloneProducts.filter(
+        (product) => product.productCategory === "bisiklet"
+      );
+      setProducts(newArray);
+    } else if (kategori === "parca") {
+      const newArray = cloneProducts.filter(
+        (product) => product.productCategory === "parca"
+      );
+      setProducts(newArray);
+    } else if (kategori === "tamir") {
+      const newArray = cloneProducts.filter(
+        (product) => product.productCategory === "tamir"
+      );
+      setProducts(newArray);
+    } else if (kategori === "aksesuar") {
+      const newArray = cloneProducts.filter(
+        (product) => product.productCategory === "aksesuar"
+      );
+      setProducts(newArray);
+    } else if (kategori === "hepsi") {
+      setProducts(cloneProducts);
+    }
+  };
+
   return (
     <div className="admin-page">
       <AdminPanel />
       <div className="admin-page-main">
         <div className={productSettings ? "inactive" : "panel-products"}>
-          <p className="admin-products-title">Ürünler</p>
+          <div className="admin-products-header">
+            <p className="admin-products-title">Ürünler</p>
+            <div className="admin-products-filter">
+              <p onClick={() => categoryFilterFunc("bisiklet")}>Bisiklet</p>
+              <p onClick={() => categoryFilterFunc("parca")}>Parça</p>
+              <p onClick={() => categoryFilterFunc("tamir")}>Tamir</p>
+              <p onClick={() => categoryFilterFunc("aksesuar")}>Aksesuar</p>
+              <p onClick={() => categoryFilterFunc("hepsi")}>Tüm Ürünler</p>
+            </div>
+          </div>
           <div className="panel-product-list">
             {products
               ? products.map((product) => (
@@ -126,6 +164,11 @@ const AdminProducts = () => {
         <div className={productSettings ? "product-settings-main" : "inactive"}>
           {selectedProduct ? (
             <>
+              <BiArrowBack
+                className="product-settings-back-button"
+                onClick={() => setProductSettings(false)}
+              />
+
               <p className="admin-products-title">Ürün Düzenleme</p>
               <div className="product-settings-product-info">
                 <div className="panel-single-product">

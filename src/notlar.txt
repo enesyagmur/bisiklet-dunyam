@@ -73,7 +73,11 @@ Güvenlik:
 
 
 Son Durum : ////////////////////////////////////////////////////////
-admin panelde ürün düzenleme sayfası
+admin panel responsive yapma
+adminproducts sayfasına ürün filiteleme
+admin siparişler: sipariş iptali, durum güncelleme, kargo no girme
+
+ürünler sayfasındaki ürünleri favorilere ekleme
 
 
 
