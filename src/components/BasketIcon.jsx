@@ -10,7 +10,10 @@ const BasketIcon = () => {
   const basket = useSelector((state) => state.basket.basketProducts);
 
   return (
-    <div className="basket-icon" onClick={() => navigate("basket")}>
+    <div
+      className={basket.length !== 0 ? "basket-icon" : "inactive"}
+      onClick={() => navigate("basket")}
+    >
       <SlBasket className="icon" />
       {basket.length > 0 ? (
         <p className="basket-count">{basket.length}</p>

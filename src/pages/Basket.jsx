@@ -26,6 +26,13 @@ const Basket = () => {
     dispatch(productDeleteFromBasket(id));
   };
 
+  useEffect(() => {
+    alert("Sepetinizde bulunan ürünler silindi.");
+    if (basket.length === 0) {
+      navigate("/");
+    }
+  }, [basket]);
+
   const goOrderCreate = () => {
     if (auth.currentUser) {
       navigate(`/ordercreate/${total}`);

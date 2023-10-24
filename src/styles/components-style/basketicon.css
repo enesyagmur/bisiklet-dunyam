@@ -31,6 +31,12 @@
 
   border-radius: 50%;
 }
+
+/* ---------------------- */
+.inactive {
+  display: none;
+}
+
 /* 600-1200px --------------------------------------- */
 @media (max-width: 1200px) {
   .basket-icon {

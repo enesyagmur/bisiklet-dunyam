@@ -75,7 +75,9 @@ Güvenlik:
 Son Durum : ////////////////////////////////////////////////////////
 admin panel responsive yapma
 
-
+ürünler sayfası searchbar 
+sepet boş ise sepete gidemesin
+toastify dahil etme
 ürünler sayfasındaki ürünleri favorilere ekleme
 
 
