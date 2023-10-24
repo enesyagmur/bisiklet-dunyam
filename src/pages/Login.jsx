@@ -7,6 +7,7 @@ import { auth } from "../Firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [inputEmail, setInputEmail] = useState("");
@@ -27,10 +28,32 @@ const Login = () => {
           } else {
             navigate("/");
           }
+        } else {
+          toast.error(`Giriş başarısız.`, {
+            style: {
+              border: "1px solid #b12718",
+              padding: "16px",
+              color: "#b12718",
+            },
+            iconTheme: {
+              primary: "#b12718",
+              secondary: "#e6e6e5",
+            },
+          });
         }
       })
       .catch((err) => {
-        alert(err);
+        toast.error(err, {
+          style: {
+            border: "1px solid #b12718",
+            padding: "16px",
+            color: "#b12718",
+          },
+          iconTheme: {
+            primary: "#b12718",
+            secondary: "#e6e6e5",
+          },
+        });
       });
   };
 
@@ -56,14 +79,24 @@ const Login = () => {
     if (inputEmailForReset) {
       sendPasswordResetEmail(auth, inputEmailForReset)
         .then(() => {
-          alert("sıfırlama linki gönderiliyor");
+          toast("sıfırlama linki gönderiliyor");
           setOpenPasswordReset(false);
         })
         .catch((err) => {
           alert(err);
         });
     } else {
-      alert("Mail adresinizi giriniz");
+      toast.error(`Mail adresi boş bırakılamaz.`, {
+        style: {
+          border: "1px solid #b12718",
+          padding: "16px",
+          color: "#b12718",
+        },
+        iconTheme: {
+          primary: "#b12718",
+          secondary: "#e6e6e5",
+        },
+      });
     }
   };
 

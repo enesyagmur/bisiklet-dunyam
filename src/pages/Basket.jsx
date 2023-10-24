@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 const Basket = () => {
   const [total, setTotal] = useState(0);
@@ -29,7 +29,17 @@ const Basket = () => {
 
   useEffect(() => {
     if (basket.length === 0) {
-      toast.success("Sepetinizde Bulunan Ürünler Silindi");
+      toast.success(`Sepetinizde bulunan ürünler silindi.`, {
+        style: {
+          border: "1px solid #b12718",
+          padding: "16px",
+          color: "#121212",
+        },
+        iconTheme: {
+          primary: "#e6e6e5",
+          secondary: "#b12718",
+        },
+      });
     }
     setTimeout(() => {
       if (basket.length === 0) {

@@ -14,6 +14,7 @@ import { RiProfileFill } from "react-icons/ri";
 import { HiLocationMarker } from "react-icons/hi";
 import { RiBillFill } from "react-icons/ri";
 import { MdFavorite } from "react-icons/md";
+import toast from "react-hot-toast";
 
 const Account = () => {
   const [dropdownShow, setDropdownShow] = useState(0);
@@ -25,9 +26,30 @@ const Account = () => {
     signOut(auth)
       .then(() => {
         navigate("/");
+        toast.success(`çıkış yapıldı.`, {
+          style: {
+            border: "1px solid #82827d",
+            padding: "16px",
+            color: "#121212",
+          },
+          iconTheme: {
+            primary: "#e6e6e5",
+            secondary: "#121212",
+          },
+        });
       })
       .catch((err) => {
-        alert(err);
+        toast.error(err, {
+          style: {
+            border: "1px solid #b12718",
+            padding: "16px",
+            color: "#b12718",
+          },
+          iconTheme: {
+            primary: "#b12718",
+            secondary: "#e6e6e5",
+          },
+        });
       });
   };
   return (

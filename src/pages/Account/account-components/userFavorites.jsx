@@ -5,6 +5,7 @@ import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { auth, db } from "../../../Firebase";
 import { MdFavorite } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
+import toast from "react-hot-toast";
 
 const UserFavorites = ({ dropdownShow, setDropdownShow }) => {
   const [currentUserFavorites, setcurrentUserFavorites] = useState();
@@ -32,6 +33,17 @@ const UserFavorites = ({ dropdownShow, setDropdownShow }) => {
     const favoritesDoc = doc(db, "favorites", id);
     await deleteDoc(favoritesDoc);
     getFavoritesFunc();
+    toast.success(`Favori silindi.`, {
+      style: {
+        border: "1px solid #82827d",
+        padding: "16px",
+        color: "#121212",
+      },
+      iconTheme: {
+        primary: "#e6e6e5",
+        secondary: "#121212",
+      },
+    });
   };
 
   return (

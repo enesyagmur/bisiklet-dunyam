@@ -6,6 +6,7 @@ import { addDoc, collection, getDocs } from "firebase/firestore";
 import { auth, db } from "../Firebase";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const AdviceProducts = () => {
   const basket = useSelector((state) => state.basket.basketProducts);
@@ -58,12 +59,27 @@ const AdviceProducts = () => {
           userEmail: auth.currentUser.email,
           userId: auth.currentUser.uid,
         });
+        toast("Favorilere Eklendi.");
       } else if (userFavoritesCheck !== true) {
-        alert("favorileriniz dolu");
+        toast.error(`Favorileriniz dolu.`, {
+          style: {
+            border: "1px solid #b12718",
+            padding: "16px",
+            color: "#b12718",
+          },
+          iconTheme: {
+            primary: "#b12718",
+            secondary: "#e6e6e5",
+          },
+        });
       }
     } else {
       navigate("/login");
     }
+  };
+
+  const addBasketFunc = (product) => {
+    dispatch(productAddToBasket(product));
   };
 
   const checkBasketFunc = (productname) => {
@@ -106,7 +122,7 @@ const AdviceProducts = () => {
                   ) : (
                     <button
                       className="product-add-basket-btn"
-                      onClick={() => dispatch(productAddToBasket(product))}
+                      onClick={() => addBasketFunc(product)}
                     >
                       Sepete Ekle
                     </button>

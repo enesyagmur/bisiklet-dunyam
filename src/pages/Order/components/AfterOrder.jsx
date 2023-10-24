@@ -10,11 +10,11 @@ const AfterOrder = ({ orderInfo }) => {
           <div className="after-order-detail">
             <div className="after-order-title">
               <div className="order-number">
-                <p>Sipariş Numarası</p> :{" "}
+                <p>Sipariş Numarası</p> :
                 <p className="order-title-info">{orderInfo.orderNumber}</p>
               </div>
               <div className="order-total">
-                <p>Sipariş Toplamı</p> :{" "}
+                <p>Sipariş Toplamı</p> :
                 <p className="order-title-info">{orderInfo.orderTotal} TL</p>
               </div>
             </div>

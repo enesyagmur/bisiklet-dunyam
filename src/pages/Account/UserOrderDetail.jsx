@@ -5,6 +5,7 @@ import "../Account/account-styles/userOrderDetail.css";
 import { useParams } from "react-router-dom";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import { db } from "../../Firebase";
+import toast from "react-hot-toast";
 
 const UserOrderDetail = () => {
   const { ordernumber } = useParams();
@@ -34,13 +35,35 @@ const UserOrderDetail = () => {
         orderStatus: "Sipariş İptal Edildi",
         orderStatusDetail: "Sipariş İptal Edildi",
       });
-      alert(
-        "Sipariş iptal edildi. Değişikliği görüntülemek için sayfayı yenileyebilirsiniz."
+
+      toast.success(
+        `Sipariş iptal edildi. Değişikliği görüntülemek için sayfayı yenileyebilirsiniz..`,
+        {
+          style: {
+            border: "1px solid #82827d",
+            padding: "16px",
+            color: "#121212",
+          },
+          iconTheme: {
+            primary: "#e6e6e5",
+            secondary: "#121212",
+          },
+        }
       );
       getOrderFunc();
       setInputReasonCancel("");
     } else {
-      alert("İptal Sebebi Giriniz");
+      toast.error(`Sipariş iptal için nedeni giriniz.`, {
+        style: {
+          border: "1px solid #b12718",
+          padding: "16px",
+          color: "#b12718",
+        },
+        iconTheme: {
+          primary: "#b12718",
+          secondary: "#e6e6e5",
+        },
+      });
     }
   };
 

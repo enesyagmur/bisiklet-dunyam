@@ -10,6 +10,7 @@ import { auth, db } from "../../Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { clearBasket } from "../../redux/basketSlice";
 import AfterOrder from "./components/AfterOrder";
+import toast from "react-hot-toast";
 
 const OrderCreate = () => {
   const { total } = useParams();
@@ -32,6 +33,7 @@ const OrderCreate = () => {
     createRandomNumberFunc();
   }, []);
 
+  //sipariş oluşturma
   const createOrderFunc = async () => {
     var now = new Date().toLocaleString(`tr-TR`);
     if (randomNumber !== 0) {
@@ -48,7 +50,17 @@ const OrderCreate = () => {
             orderStatus: "Ödeme Bekleniyor",
             orderStatusDetail: "Ödeme Bekleniyor",
           });
-          alert("siparişiniz oluşturuldu");
+          toast.success(`Siparişiniz oluşturuldu.`, {
+            style: {
+              border: "1px solid #82827d",
+              padding: "16px",
+              color: "#121212",
+            },
+            iconTheme: {
+              primary: "#e6e6e5",
+              secondary: "#121212",
+            },
+          });
           setOrderInfo({
             orderNumber: randomNumber,
             orderAdress: adress,
@@ -63,10 +75,21 @@ const OrderCreate = () => {
           alert(err);
         }
       } else {
-        alert("sözleşme kabul edilmedi");
+        toast.error(
+          `Sipariş oluşturmadan önce mesafeli satış sözleşmesini onaylamanız gerekiyor.`,
+          {
+            style: {
+              border: "1px solid #b12718",
+              padding: "16px",
+              color: "#b12718",
+            },
+            iconTheme: {
+              primary: "#b12718",
+              secondary: "#e6e6e5",
+            },
+          }
+        );
       }
-    } else {
-      alert("random number 0 a eşit");
     }
   };
 

@@ -6,6 +6,7 @@ import { BsFacebook } from "react-icons/bs";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [inputEmail, setInputEmail] = useState("");
@@ -13,6 +14,7 @@ const Register = () => {
 
   const navigate = useNavigate();
 
+  //kayıt fonksiyonu
   const registerFunc = () => {
     createUserWithEmailAndPassword(auth, inputEmail, inputPassword)
       .then((userCredential) => {
@@ -22,7 +24,17 @@ const Register = () => {
         }
       })
       .catch((err) => {
-        alert(err);
+        toast.error(err, {
+          style: {
+            border: "1px solid #b12718",
+            padding: "16px",
+            color: "#b12718",
+          },
+          iconTheme: {
+            primary: "#b12718",
+            secondary: "#e6e6e5",
+          },
+        });
       });
   };
 
