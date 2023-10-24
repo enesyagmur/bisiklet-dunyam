@@ -21,6 +21,7 @@ const AdviceProducts = () => {
     setRecommendedProducts(filterProducts);
   };
 
+  //bu kullanıcının kaç favori ürünü var ona bakıcaz
   const checkUserFavoriCountFunc = async () => {
     const favoritesData = await getDocs(collection(db, "favorites"));
     const favoritesProducts = favoritesData.docs.map((doc) => ({
@@ -29,7 +30,6 @@ const AdviceProducts = () => {
     }));
 
     if (auth.currentUser) {
-      //bu kullanıcının kaç favori ürünü var ona bakıcaz
       const newArray = favoritesProducts.filter(
         (favori) => favori.userId === auth.currentUser.uid
       );

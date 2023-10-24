@@ -4,6 +4,7 @@ import logo from "../images/logo.png";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -22,6 +23,10 @@ const Header = () => {
     } else {
       navigate(`/${where}`);
     }
+  };
+
+  const alert = () => {
+    toast("Hello World");
   };
 
   return (
@@ -46,7 +51,7 @@ const Header = () => {
           BISIKLET DUNYAM
         </p>
         <div className="header-links">
-          <p onClick={() => go("")}>ANASAYFA</p>
+          <p onClick={alert}>ANASAYFA</p>
           <p onClick={() => go("products")}>ÜRÜNLER</p>
           <p onClick={() => go("contact")}>İLETİŞİM</p>
           <p onClick={() => go("account")}>HESAP</p>

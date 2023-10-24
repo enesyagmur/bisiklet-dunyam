@@ -18,6 +18,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "./Firebase";
 import { useDispatch } from "react-redux";
 import { addProductsToRedux } from "./redux/productsSlice";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 }

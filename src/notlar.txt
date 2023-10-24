@@ -76,8 +76,7 @@ Son Durum : ////////////////////////////////////////////////////////
 admin panel responsive yapma
 
 ürünler sayfası searchbar 
-sepet boş ise sepete gidemesin
-toastify dahil etme
+toastify tüm uyarılar için kullanma
 ürünler sayfasındaki ürünleri favorilere ekleme
 
 

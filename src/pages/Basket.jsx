@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { toast } from "react-toastify";
 
 const Basket = () => {
   const [total, setTotal] = useState(0);
@@ -27,10 +28,14 @@ const Basket = () => {
   };
 
   useEffect(() => {
-    alert("Sepetinizde bulunan ürünler silindi.");
     if (basket.length === 0) {
-      navigate("/");
+      toast.success("Sepetinizde Bulunan Ürünler Silindi");
     }
+    setTimeout(() => {
+      if (basket.length === 0) {
+        navigate("/");
+      }
+    }, 1000);
   }, [basket]);
 
   const goOrderCreate = () => {
