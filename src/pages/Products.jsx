@@ -5,11 +5,13 @@ import "../styles/products.css";
 import { useDispatch, useSelector } from "react-redux";
 import { productAddToBasket } from "../redux/basketSlice";
 import ScrollButton from "../components/ScrollButton";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../Firebase";
-import { useParams } from "react-router-dom";
+import { addDoc, collection, getDocs } from "firebase/firestore";
+import { auth, db } from "../Firebase";
+import { useNavigate, useParams } from "react-router-dom";
 import { BsFilterCircleFill } from "react-icons/bs";
 import BasketIcon from "../components/BasketIcon";
+import toast from "react-hot-toast";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const Products = () => {
   const basket = useSelector((state) => state.basket.basketProducts);
@@ -30,9 +32,12 @@ const Products = () => {
     true,
   ]);
   const [openFilter, setOpenFilter] = useState(false);
+  const [productCheckInFavorites, setproductCheckInFavorites] = useState();
   const dispatch = useDispatch();
   const { categoryName } = useParams();
-
+  const navigate = useNavigate();
+  const [userFavorites, setUserFavorites] = useState();
+  const [inputSearchProduct, setInputSearchProduct] = useState();
   const productsCollectionRef = collection(db, "products");
 
   //ürünleri alma
@@ -56,6 +61,17 @@ const Products = () => {
       setProducts(justProducts);
     } catch (err) {
       alert(err);
+    }
+  };
+
+  //arama func
+  const searchFunc = (inputProduct) => {
+    const newArray = products.filter((product) =>
+      product.productName.toLowerCase().includes(inputProduct.toLowerCase())
+    );
+
+    if (newArray) {
+      setcloneProducts(newArray);
     }
   };
 
@@ -158,9 +174,86 @@ const Products = () => {
     }
   };
 
+  //bu kullanıcının kaç favori ürünü var onu alma
+  const getUserFavoriFunc = async () => {
+    const favoritesData = await getDocs(collection(db, "favorites"));
+    const favoritesProducts = favoritesData.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+
+    if (auth.currentUser) {
+      const newArray = favoritesProducts.filter(
+        (favori) => favori.userId === auth.currentUser.uid
+      );
+      if (newArray) {
+        setUserFavorites(newArray);
+      }
+    }
+  };
+
+  const findProductInFavoriFunc = (productName) => {
+    const findFavori = userFavorites.find(
+      (favori) => favori.product.productName === productName
+    );
+    if (findFavori) {
+      setproductCheckInFavorites(true);
+    } else {
+      setproductCheckInFavorites(false);
+    }
+  };
+
+  //ürünü favorilere ekleme func
+  const productAddFavoritesFunc = async (product) => {
+    getUserFavoriFunc();
+    findProductInFavoriFunc(product.productName);
+
+    if (auth.currentUser) {
+      //kullanıcının favori sayısı 6 dan küçükse
+      if (userFavorites.length < 6) {
+        //kullanıcının favorilerinde bu üründen yoksa
+        if (productCheckInFavorites === false) {
+          await addDoc(collection(db, "favorites"), {
+            product: product,
+            userEmail: auth.currentUser.email,
+            userId: auth.currentUser.uid,
+          });
+          toast("Favorilere Eklendi.");
+        } else if (productCheckInFavorites === true) {
+          toast.error(`Seçtiğiniz ürün favorilerinizde bulunuyor.`, {
+            style: {
+              border: "1px solid #b12718",
+              padding: "16px",
+              color: "#b12718",
+            },
+            iconTheme: {
+              primary: "#b12718",
+              secondary: "#e6e6e5",
+            },
+          });
+        }
+      } else if (userFavorites.length === 6) {
+        toast.error(`Favorileriniz dolu.`, {
+          style: {
+            border: "1px solid #b12718",
+            padding: "16px",
+            color: "#b12718",
+          },
+          iconTheme: {
+            primary: "#b12718",
+            secondary: "#e6e6e5",
+          },
+        });
+      }
+    } else {
+      navigate("/login");
+    }
+  };
+
   //sayfa açıldığında getAllProductsFunc nu çalıştırıyor
   useEffect(() => {
     getAllProductsFunc(categoryName);
+    getUserFavoriFunc();
   }, []);
 
   //fiyat değişikliğini takip ediyor ona göre priceFilterFunc nunu çalıştırıyor
@@ -179,6 +272,12 @@ const Products = () => {
       <BasketIcon />
       <div className="products-body">
         <p className="products-main-title">ÜRÜNLER</p>
+        <input
+          type="text"
+          placeholder="Ürün Arama"
+          className="products-searchbar"
+          onChange={(e) => searchFunc(e.target.value)}
+        />
 
         <div className="products-main">
           <BsFilterCircleFill
@@ -303,6 +402,10 @@ const Products = () => {
             {cloneProducts
               ? cloneProducts.map((product) => (
                   <div className="product">
+                    <AiOutlineHeart
+                      className="product-heart-icon"
+                      onClick={() => productAddFavoritesFunc(product)}
+                    />
                     <div className="product-image">
                       <img src={product.productImage} alt="" />
                     </div>

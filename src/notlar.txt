@@ -75,36 +75,10 @@ Güvenlik:
 Son Durum : ////////////////////////////////////////////////////////
 admin panel responsive yapma
 
-ürünler sayfası searchbar 
-hot toast ı tüm uyarılar için kullanma
-ürünler sayfasındaki ürünleri favorilere ekleme
+ürünler sayfası filitreler beraber çalışması
+ürün favorilerde var ise eklemesin
 
 
-toast.success(`Sepete eklendi.`, {
-      style: {
-        border: "1px solid #82827d",
-        padding: "16px",
-        color: "#121212",
-      },
-      iconTheme: {
-        primary: "#e6e6e5",
-        secondary: "#121212",
-      },
-    });
-
-------------------
-
-     toast.error(`Favorileriniz dolu.`, {
-          style: {
-            border: "1px solid #b12718",
-            padding: "16px",
-            color: "#b12718",
-          },
-          iconTheme: {
-            primary: "#b12718",
-            secondary: "#e6e6e5",
-          },
-        });
 
 
 

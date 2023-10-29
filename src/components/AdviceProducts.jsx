@@ -49,6 +49,7 @@ const AdviceProducts = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //ürünü favorilere ekleme func
   const productAddFavoritesFunc = async (product) => {
     checkUserFavoriCountFunc();
 
