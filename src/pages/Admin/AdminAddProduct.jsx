@@ -5,6 +5,7 @@ import "../Admin/adminStyles/adminAddProduct.css";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { addDoc, collection } from "firebase/firestore";
 import AdminPanel from "./AdminPanel";
+import toast from "react-hot-toast";
 
 const AdminAddProduct = () => {
   const [productName, setproductName] = useState("");
@@ -46,9 +47,29 @@ const AdminAddProduct = () => {
       setproductDetail("");
       setproductPrice("");
       setproductStock("");
-      alert("ürün eklendi");
+      toast.success(`Ürün eklendi.`, {
+        style: {
+          border: "1px solid #82827d",
+          padding: "16px",
+          color: "#121212",
+        },
+        iconTheme: {
+          primary: "#e6e6e5",
+          secondary: "#121212",
+        },
+      });
     } catch (err) {
-      alert(err);
+      toast.error(err, {
+        style: {
+          border: "1px solid #b12718",
+          padding: "16px",
+          color: "#b12718",
+        },
+        iconTheme: {
+          primary: "#b12718",
+          secondary: "#e6e6e5",
+        },
+      });
     }
   };
 

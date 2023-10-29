@@ -11,6 +11,7 @@ import {
 import { auth, db } from "../../../Firebase";
 import { HiLocationMarker } from "react-icons/hi";
 import { RxCross1 } from "react-icons/rx";
+import toast from "react-hot-toast";
 
 const UserAdress = ({ dropdownShow, setDropdownShow }) => {
   const [inputAdressTitle, setInputAdressTitle] = useState("");
@@ -42,10 +43,30 @@ const UserAdress = ({ dropdownShow, setDropdownShow }) => {
           userId: auth.currentUser.uid,
         });
 
-        alert("adres kayıt edildi");
+        toast.success(`Adres kayıt edildi.`, {
+          style: {
+            border: "1px solid #82827d",
+            padding: "16px",
+            color: "#121212",
+          },
+          iconTheme: {
+            primary: "#e6e6e5",
+            secondary: "#121212",
+          },
+        });
         getAdressFunc();
       } catch (err) {
-        alert(err);
+        toast.error(err, {
+          style: {
+            border: "1px solid #b12718",
+            padding: "16px",
+            color: "#b12718",
+          },
+          iconTheme: {
+            primary: "#b12718",
+            secondary: "#e6e6e5",
+          },
+        });
       }
     }
   };
@@ -73,7 +94,17 @@ const UserAdress = ({ dropdownShow, setDropdownShow }) => {
   const deleteAdressFunc = async (id) => {
     const adressDoc = doc(db, "usersAdress", id);
     await deleteDoc(adressDoc);
-    alert("adresiniz silindi");
+    toast.success(`Adresiniz silindi`, {
+      style: {
+        border: "1px solid #82827d",
+        padding: "16px",
+        color: "#121212",
+      },
+      iconTheme: {
+        primary: "#e6e6e5",
+        secondary: "#121212",
+      },
+    });
     inputsClear();
     getAdressFunc();
     setDropdownShow(0);

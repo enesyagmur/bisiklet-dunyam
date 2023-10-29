@@ -12,6 +12,7 @@ const UserOrderDetail = () => {
   const [orderInfo, setOrderInfo] = useState();
   const [InputReasonCancel, setInputReasonCancel] = useState("");
 
+  //sipariş numarasından sipariş bulma
   const getOrderFunc = async () => {
     const ordersData = await getDocs(collection(db, "orders"));
     const orders = ordersData.docs.map((doc) => ({
@@ -27,6 +28,7 @@ const UserOrderDetail = () => {
     }
   };
 
+  //sipariş iptal func
   const orderCancelFunc = async () => {
     const orderRef = doc(db, "orders", orderInfo.id);
 

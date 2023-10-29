@@ -12,6 +12,7 @@ import {
 import { BiLike } from "react-icons/bi";
 import { CiSquareRemove } from "react-icons/ci";
 import { BiArrowBack } from "react-icons/bi";
+import toast from "react-hot-toast";
 
 import { db } from "../../Firebase";
 
@@ -41,7 +42,17 @@ const AdminProducts = () => {
     const productsDoc = doc(db, "products", id);
     await deleteDoc(productsDoc);
     getAllProductsFunc();
-    alert("Ürün Silindi");
+    toast.success(`Ürün silindi.`, {
+      style: {
+        border: "1px solid #82827d",
+        padding: "16px",
+        color: "#121212",
+      },
+      iconTheme: {
+        primary: "#e6e6e5",
+        secondary: "#121212",
+      },
+    });
     setProductSettings(false);
   };
 
@@ -65,31 +76,94 @@ const AdminProducts = () => {
         await updateDoc(productRef, {
           productPrice: Number(inputNewProductValue),
         });
-        alert(
-          `Ürün fiyatı : ${inputNewProductValue} TL olarak güncellendi. Değişikliğin gözükmesi için sayfayı yenileyin.`
+        toast.success(
+          `Ürün fiyatı : ${inputNewProductValue} TL olarak güncellendi. Değişikliğin gözükmesi için sayfayı yenileyin.`,
+          {
+            style: {
+              border: "1px solid #82827d",
+              padding: "16px",
+              color: "#121212",
+            },
+            iconTheme: {
+              primary: "#e6e6e5",
+              secondary: "#121212",
+            },
+          }
         );
       }
-      alert("Değer Giriniz");
+      toast.error(`Değer giriniz.`, {
+        style: {
+          border: "1px solid #b12718",
+          padding: "16px",
+          color: "#b12718",
+        },
+        iconTheme: {
+          primary: "#b12718",
+          secondary: "#e6e6e5",
+        },
+      });
     } else if (checkboxControl[1] === true) {
       if (inputNewProductValue) {
         await updateDoc(productRef, {
           productStock: Number(inputNewProductValue),
         });
-        alert(
-          `Ürün Stok : ${inputNewProductValue} adet olarak güncellendi. Değişikliğin gözükmesi için sayfayı yenileyin.`
+        toast.success(
+          `Ürün Stok : ${inputNewProductValue} adet olarak güncellendi. Değişikliğin gözükmesi için sayfayı yenileyin.`,
+          {
+            style: {
+              border: "1px solid #82827d",
+              padding: "16px",
+              color: "#121212",
+            },
+            iconTheme: {
+              primary: "#e6e6e5",
+              secondary: "#121212",
+            },
+          }
         );
       } else {
-        alert("Değer Giriniz");
+        toast.error(`Değer giriniz.`, {
+          style: {
+            border: "1px solid #b12718",
+            padding: "16px",
+            color: "#b12718",
+          },
+          iconTheme: {
+            primary: "#b12718",
+            secondary: "#e6e6e5",
+          },
+        });
       }
     } else if (checkboxControl[2] === true) {
       await updateDoc(productRef, {
         productRecommended: !selectedProduct.productRecommended,
       });
-      alert(
-        `Ürün Önerilen : ${!selectedProduct.productRecommended} olarak güncellendi. Değişikliğin gözükmesi için sayfayı yenileyin.`
+      toast.success(
+        `Ürün Önerilen : ${!selectedProduct.productRecommended} olarak güncellendi. Değişikliğin gözükmesi için sayfayı yenileyin.`,
+        {
+          style: {
+            border: "1px solid #82827d",
+            padding: "16px",
+            color: "#121212",
+          },
+          iconTheme: {
+            primary: "#e6e6e5",
+            secondary: "#121212",
+          },
+        }
       );
     } else {
-      alert("Hangi değeri değiştirmek istediğinizi seçin");
+      toast.error(`Hangi değeri değiştirmek istediğinizi seçmeniz gerekiyor.`, {
+        style: {
+          border: "1px solid #b12718",
+          padding: "16px",
+          color: "#b12718",
+        },
+        iconTheme: {
+          primary: "#b12718",
+          secondary: "#e6e6e5",
+        },
+      });
     }
   };
 

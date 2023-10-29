@@ -15,6 +15,7 @@ import { BsPencil } from "react-icons/bs";
 import { updateEmail } from "firebase/auth";
 import { RiProfileFill } from "react-icons/ri";
 import { RxCross1 } from "react-icons/rx";
+import toast from "react-hot-toast";
 
 const UserPersonel = ({ dropdownShow, setDropdownShow }) => {
   const [inputName, setInputName] = useState("");
@@ -61,14 +62,35 @@ const UserPersonel = ({ dropdownShow, setDropdownShow }) => {
           userEmail: auth.currentUser.email,
           userId: auth.currentUser.uid,
         });
-        alert("bilgiler kayıt edildi");
+
+        toast.success(`Bilgileriniz kayıt edildi.`, {
+          style: {
+            border: "1px solid #82827d",
+            padding: "16px",
+            color: "#121212",
+          },
+          iconTheme: {
+            primary: "#e6e6e5",
+            secondary: "#121212",
+          },
+        });
         searchUsersFunc();
         setDropdownShow(0);
       } catch (err) {
         alert(err);
       }
     } else {
-      alert("bilgiler boş bırakılamaz");
+      toast.error(`Kayıt için bilgi girilmelidir.`, {
+        style: {
+          border: "1px solid #b12718",
+          padding: "16px",
+          color: "#b12718",
+        },
+        iconTheme: {
+          primary: "#b12718",
+          secondary: "#e6e6e5",
+        },
+      });
     }
   };
 
@@ -81,8 +103,19 @@ const UserPersonel = ({ dropdownShow, setDropdownShow }) => {
     const usersInfoDoc = doc(db, "usersInfo", id);
     await deleteDoc(usersInfoDoc);
     searchUsersFunc();
-    alert(
-      "Kişisel bilgileriniz silindi, verilerin güncellenmesi için çıkış-giriş işlemi yapmanızı rica ediyoruz."
+    toast.success(
+      `Kişisel bilgileriniz silindi, verilerin güncellenmesi için çıkış-giriş işlemi yapmanızı rica ediyoruz.`,
+      {
+        style: {
+          border: "1px solid #82827d",
+          padding: "16px",
+          color: "#121212",
+        },
+        iconTheme: {
+          primary: "#e6e6e5",
+          secondary: "#121212",
+        },
+      }
     );
     setDropdownShow(0);
   };
@@ -93,13 +126,33 @@ const UserPersonel = ({ dropdownShow, setDropdownShow }) => {
       updateEmail(auth.currentUser, newEmail)
         .then(() => {
           setOpenEmailReset(false);
-          alert("mail güncellendi");
+          toast.success(`Mail adresiniz güncellendi.`, {
+            style: {
+              border: "1px solid #82827d",
+              padding: "16px",
+              color: "#121212",
+            },
+            iconTheme: {
+              primary: "#e6e6e5",
+              secondary: "#121212",
+            },
+          });
         })
         .catch((err) => {
           alert(err);
         });
     } else {
-      alert("Email Giriniz");
+      toast.error(`Güncelleme için email giriniz.`, {
+        style: {
+          border: "1px solid #b12718",
+          padding: "16px",
+          color: "#b12718",
+        },
+        iconTheme: {
+          primary: "#b12718",
+          secondary: "#e6e6e5",
+        },
+      });
     }
   };
 

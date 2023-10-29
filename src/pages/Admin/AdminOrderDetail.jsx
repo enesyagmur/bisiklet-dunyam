@@ -5,6 +5,7 @@ import AdminPanel from "./AdminPanel";
 import { useParams } from "react-router-dom";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import { db } from "../../Firebase";
+import toast from "react-hot-toast";
 
 const AdminOrderDetail = () => {
   const [order, setOrder] = useState();
@@ -48,6 +49,17 @@ const AdminOrderDetail = () => {
       alert(
         "Sipariş durumu: Sipariş Hazırlanıyor, olarak güncellendi. Değişikliği görüntülemek için sayfayı yenileyebilirsiniz."
       );
+      toast.success(`Sepete eklendi.`, {
+        style: {
+          border: "1px solid #82827d",
+          padding: "16px",
+          color: "#121212",
+        },
+        iconTheme: {
+          primary: "#e6e6e5",
+          secondary: "#121212",
+        },
+      });
     }
     //sipariş iptali, kargoya verildi için input kontrolu
     else if (orderStateInput !== "") {
@@ -58,8 +70,19 @@ const AdminOrderDetail = () => {
         });
 
         setOrderStateInput("");
-        alert(
-          `Sipariş durumu kargoya verildi olarak güncellendi. Değişikliği görüntülemek için sayfayı yenileyebilirsiniz.`
+        toast.success(
+          `Sipariş durumu kargoya verildi olarak güncellendi. Değişikliği görüntülemek için sayfayı yenileyebilirsiniz.`,
+          {
+            style: {
+              border: "1px solid #82827d",
+              padding: "16px",
+              color: "#121212",
+            },
+            iconTheme: {
+              primary: "#e6e6e5",
+              secondary: "#121212",
+            },
+          }
         );
       } else if (orderStateChange[2] === true) {
         await updateDoc(orderRef, {
@@ -67,8 +90,19 @@ const AdminOrderDetail = () => {
           orderStatusDetail: `Siparişiniz ${orderStateInput} sebebi ile iptal edildi, üzgünüz.`,
         });
         setOrderStateInput("");
-        alert(
-          `Sipariş ${orderStateInput} sebebi ile iptal edildi. Değişikliği görüntülemek için sayfayı yenileyebilirsiniz.`
+        toast.success(
+          `Sipariş ${orderStateInput} sebebi ile iptal edildi. Değişikliği görüntülemek için sayfayı yenileyebilirsiniz.`,
+          {
+            style: {
+              border: "1px solid #82827d",
+              padding: "16px",
+              color: "#121212",
+            },
+            iconTheme: {
+              primary: "#e6e6e5",
+              secondary: "#121212",
+            },
+          }
         );
       }
     }
@@ -78,7 +112,17 @@ const AdminOrderDetail = () => {
       orderStateChange[1] === false &&
       orderStateChange[2] === false
     ) {
-      alert("Yapılacak işlem için seçim yapmalısınız");
+      toast.error(`Yapılacak işlem için seçim yapmalısınız.`, {
+        style: {
+          border: "1px solid #b12718",
+          padding: "16px",
+          color: "#b12718",
+        },
+        iconTheme: {
+          primary: "#b12718",
+          secondary: "#e6e6e5",
+        },
+      });
     }
   };
 
