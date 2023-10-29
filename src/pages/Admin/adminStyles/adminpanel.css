@@ -46,7 +46,13 @@
 }
 
 /* 425-600px --------------------------------------- */
-@media (max-width: 120px) {
+@media (max-width: 600px) {
+  .adminpanel-pages div {
+    width: 95%;
+  }
+  .adminpanelpages div p {
+    width: 70%;
+  }
 }
 
 /* 0-425px --------------------------------------- */

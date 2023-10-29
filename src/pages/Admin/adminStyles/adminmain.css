@@ -18,12 +18,6 @@
 
 /* 425-600px --------------------------------------- */
 @media (max-width: 600px) {
-  .admin-page {
-    flex-direction: column;
-  }
-  .admin-page-main {
-    width: 100%;
-  }
 }
 
 /* 0-425px --------------------------------------- */
