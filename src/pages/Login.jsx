@@ -134,9 +134,6 @@ const Login = () => {
           <button onClick={loginGoogle}>
             <FcGoogle />
           </button>
-          <button>
-            <BsFacebook />
-          </button>
         </div>
       </div>
 

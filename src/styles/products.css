@@ -118,6 +118,13 @@
   justify-content: space-around;
   margin-top: 50px;
 }
+.produts-no-product {
+  width: 77%;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .products-list .product {
   width: 320px;

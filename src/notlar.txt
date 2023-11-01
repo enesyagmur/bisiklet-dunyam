@@ -19,8 +19,8 @@ Adminpanel-------------------------------
 
 
 Ürünler-------------------------------
- -searchbar: yapılmadı
- -iki filter ın beraber çalışması: yapılmadı
+ -searchbar: +
+ -iki filter ın beraber çalışması: +
 
 
 İletişim-------------------------------
@@ -73,9 +73,9 @@ Güvenlik:
 
 
 Son Durum : ////////////////////////////////////////////////////////
-admin panel responsive yapma
 
-ürünler sayfası filitreler beraber çalışması
+
+
 ürün favorilerde var ise eklemesin
 
 

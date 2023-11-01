@@ -17,6 +17,7 @@ const Products = () => {
   const basket = useSelector((state) => state.basket.basketProducts);
   const [products, setProducts] = useState([]);
   const [cloneProducts, setcloneProducts] = useState([]);
+  const [afterPriceFilterProducts, setAfterPriceFilterProducts] = useState([]);
   const [categoryCheckboxList, setcategoryCheckboxList] = useState([
     false,
     false,
@@ -32,12 +33,11 @@ const Products = () => {
     true,
   ]);
   const [openFilter, setOpenFilter] = useState(false);
-  const [productCheckInFavorites, setproductCheckInFavorites] = useState();
+  const [productCheckInFavorites, setproductCheckInFavorites] = useState(false);
   const dispatch = useDispatch();
   const { categoryName } = useParams();
   const navigate = useNavigate();
   const [userFavorites, setUserFavorites] = useState();
-  const [inputSearchProduct, setInputSearchProduct] = useState();
   const productsCollectionRef = collection(db, "products");
 
   //ürünleri alma
@@ -52,11 +52,13 @@ const Products = () => {
       //kullanıcı belli bir category e tıkladıysa sadece o ürünleri göstermek için koşul
       if (category === "all") {
         setcloneProducts(justProducts);
+        setAfterPriceFilterProducts(justProducts);
       } else {
         const newArray = justProducts.filter(
           (product) => product.productCategory === categoryName
         );
         setcloneProducts(newArray);
+        setAfterPriceFilterProducts(newArray);
       }
       setProducts(justProducts);
     } catch (err) {
@@ -71,7 +73,7 @@ const Products = () => {
     );
 
     if (newArray) {
-      setcloneProducts(newArray);
+      setAfterPriceFilterProducts(newArray);
     }
   };
 
@@ -101,63 +103,74 @@ const Products = () => {
     }
   };
 
-  //tıklanan gategoriye gore filitreleme
+  //tıklanan kategoriye gore filitreleme
   const categoryFilterFunc = () => {
+    let arrayForCatogeryFilter = [...products];
+
     if (categoryCheckboxList[0] === true) {
-      const newArray = products.filter(
+      const newArray = arrayForCatogeryFilter.filter(
         (product) => product.productCategory === "bisiklet"
       );
       setcloneProducts(newArray);
+      setAfterPriceFilterProducts(newArray);
     } else if (categoryCheckboxList[1] === true) {
-      const newArray = products.filter(
+      const newArray = arrayForCatogeryFilter.filter(
         (product) => product.productCategory === "aksesuar"
       );
       setcloneProducts(newArray);
+      setAfterPriceFilterProducts(newArray);
     } else if (categoryCheckboxList[2] === true) {
-      const newArray = products.filter(
+      const newArray = arrayForCatogeryFilter.filter(
         (product) => product.productCategory === "tamir"
       );
       setcloneProducts(newArray);
+      setAfterPriceFilterProducts(newArray);
     } else if (categoryCheckboxList[3] === true) {
-      const newArray = products.filter(
+      const newArray = arrayForCatogeryFilter.filter(
         (product) => product.productCategory === "parca"
       );
       setcloneProducts(newArray);
+      setAfterPriceFilterProducts(newArray);
     } else if (
       categoryCheckboxList[0] === false &&
       categoryCheckboxList[1] === false &&
       categoryCheckboxList[2] === false &&
       categoryCheckboxList[3] === false
     ) {
-      setcloneProducts(products);
+      setcloneProducts(arrayForCatogeryFilter);
+      setAfterPriceFilterProducts(arrayForCatogeryFilter);
     }
   };
 
   //tıklanan fiyata göre filitreleem
   const priceFilterFunc = () => {
-    products.map(
-      (product) => (product.productPrice = Number(product.productPrice))
-    );
-    let newArray = [...products];
+    let newArray = [];
     if (priceCheckboxList[0] === true) {
-      newArray = newArray.filter((product) => product.productPrice <= 200);
-      setcloneProducts(newArray);
+      newArray = cloneProducts.filter(
+        (product) => Number(product.productPrice) <= 200
+      );
+      setAfterPriceFilterProducts(newArray);
     } else if (priceCheckboxList[1] === true) {
-      newArray = newArray.filter(
-        (product) => product.productPrice > 200 && product.productPrice <= 400
+      newArray = cloneProducts.filter(
+        (product) =>
+          Number(product.productPrice) > 200 &&
+          Number(product.productPrice) <= 400
       );
-      setcloneProducts(newArray);
+      setAfterPriceFilterProducts(newArray);
     } else if (priceCheckboxList[2] === true) {
-      newArray = newArray.filter(
-        (product) => product.productPrice > 400 && product.productPrice <= 600
+      newArray = cloneProducts.filter(
+        (product) =>
+          Number(product.productPrice) > 400 &&
+          Number(product.productPrice) <= 600
       );
-      setcloneProducts(newArray);
+      setAfterPriceFilterProducts(newArray);
     } else if (priceCheckboxList[3] === true) {
-      newArray = newArray.filter((product) => product.productPrice >= 600);
-      setcloneProducts(newArray);
+      newArray = cloneProducts.filter(
+        (product) => Number(product.productPrice) >= 600
+      );
+      setAfterPriceFilterProducts(newArray);
     } else if (priceCheckboxList[4] === true) {
-      newArray = [...products];
-      setcloneProducts(newArray);
+      setAfterPriceFilterProducts(cloneProducts);
     }
   };
 
@@ -174,29 +187,26 @@ const Products = () => {
     }
   };
 
-  //bu kullanıcının kaç favori ürünü var onu alma
-  const getUserFavoriFunc = async () => {
+  //bu kullanıcının kaç favorilerini alma ve favori sayısını, aynı ürün kontrolu yapma
+  const getUserFavoriFunc = async (productName) => {
     const favoritesData = await getDocs(collection(db, "favorites"));
     const favoritesProducts = favoritesData.docs.map((doc) => ({
       ...doc.data(),
       id: doc.id,
     }));
-
+    let newArray = [];
     if (auth.currentUser) {
       const newArray = favoritesProducts.filter(
         (favori) => favori.userId === auth.currentUser.uid
       );
-      if (newArray) {
+      if (newArray.length > 0) {
         setUserFavorites(newArray);
       }
     }
-  };
-
-  const findProductInFavoriFunc = (productName) => {
-    const findFavori = userFavorites.find(
+    const findFavori = newArray.filter(
       (favori) => favori.product.productName === productName
     );
-    if (findFavori) {
+    if (findFavori.length > 0) {
       setproductCheckInFavorites(true);
     } else {
       setproductCheckInFavorites(false);
@@ -205,9 +215,7 @@ const Products = () => {
 
   //ürünü favorilere ekleme func
   const productAddFavoritesFunc = async (product) => {
-    getUserFavoriFunc();
-    findProductInFavoriFunc(product.productName);
-
+    getUserFavoriFunc(product.productName);
     if (auth.currentUser) {
       //kullanıcının favori sayısı 6 dan küçükse
       if (userFavorites.length < 6) {
@@ -398,41 +406,43 @@ const Products = () => {
             {/* ------------------ */}
           </div>
           {/* Product-List------------------------------------------------------------ */}
-          <div className="products-list" onClick={() => setOpenFilter(false)}>
-            {cloneProducts
-              ? cloneProducts.map((product) => (
-                  <div className="product">
-                    <AiOutlineHeart
-                      className="product-heart-icon"
-                      onClick={() => productAddFavoritesFunc(product)}
-                    />
-                    <div className="product-image">
-                      <img src={product.productImage} alt="" />
-                    </div>
-
-                    <div className="product-info">
-                      <p className="product-name">{product.productName}</p>
-                      <p className="product-price">{product.productPrice} TL</p>
-                      <p className="product-category">
-                        {product.productCategory}
-                      </p>
-                      {checkBasketFunc(product.productName) ? (
-                        <button className="product-already-in-basket-btn">
-                          Sepete Eklendi
-                        </button>
-                      ) : (
-                        <button
-                          className="product-add-basket-btn"
-                          onClick={() => dispatch(productAddToBasket(product))}
-                        >
-                          Sepete Ekle
-                        </button>
-                      )}
-                    </div>
+          {afterPriceFilterProducts ? (
+            <div className="products-list" onClick={() => setOpenFilter(false)}>
+              {afterPriceFilterProducts.map((product) => (
+                <div className="product">
+                  <AiOutlineHeart
+                    className="product-heart-icon"
+                    onClick={() => productAddFavoritesFunc(product)}
+                  />
+                  <div className="product-image">
+                    <img src={product.productImage} alt="" />
                   </div>
-                ))
-              : null}
-          </div>
+
+                  <div className="product-info">
+                    <p className="product-name">{product.productName}</p>
+                    <p className="product-price">{product.productPrice} TL</p>
+                    <p className="product-category">
+                      {product.productCategory}
+                    </p>
+                    {checkBasketFunc(product.productName) ? (
+                      <button className="product-already-in-basket-btn">
+                        Sepete Eklendi
+                      </button>
+                    ) : (
+                      <button
+                        className="product-add-basket-btn"
+                        onClick={() => dispatch(productAddToBasket(product))}
+                      >
+                        Sepete Ekle
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="products-no-product">Ürün Bulunmuyor</div>
+          )}
         </div>
       </div>
       <ScrollButton />
