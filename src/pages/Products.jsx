@@ -199,14 +199,14 @@ const Products = () => {
       const newArray = favoritesProducts.filter(
         (favori) => favori.userId === auth.currentUser.uid
       );
-      if (newArray.length > 0) {
+      if (newArray) {
         setUserFavorites(newArray);
       }
     }
     const findFavori = newArray.filter(
       (favori) => favori.product.productName === productName
     );
-    if (findFavori.length > 0) {
+    if (findFavori) {
       setproductCheckInFavorites(true);
     } else {
       setproductCheckInFavorites(false);
@@ -215,20 +215,47 @@ const Products = () => {
 
   //ürünü favorilere ekleme func
   const productAddFavoritesFunc = async (product) => {
-    getUserFavoriFunc(product.productName);
     if (auth.currentUser) {
-      //kullanıcının favori sayısı 6 dan küçükse
-      if (userFavorites.length < 6) {
-        //kullanıcının favorilerinde bu üründen yoksa
-        if (productCheckInFavorites === false) {
-          await addDoc(collection(db, "favorites"), {
-            product: product,
-            userEmail: auth.currentUser.email,
-            userId: auth.currentUser.uid,
-          });
-          toast("Favorilere Eklendi.");
-        } else if (productCheckInFavorites === true) {
-          toast.error(`Seçtiğiniz ürün favorilerinizde bulunuyor.`, {
+      const favoritesData = await getDocs(collection(db, "favorites"));
+      const favoritesProducts = favoritesData.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      const newArray = favoritesProducts.filter(
+        (favori) => favori.userId === auth.currentUser.uid
+      );
+      //favorilerinde ürün var ise
+      if (newArray) {
+        //ürün sayısı 6 dan küçük se
+        if (newArray.length < 6) {
+          const findFavori = newArray.find(
+            (favori) => favori.product.productName === product.productName
+          );
+          //eklemek istediği ürün favorilerinde zaten var ise
+          if (findFavori) {
+            toast.error(`Seçtiğiniz ürün favorilerinizde bulunuyor.`, {
+              style: {
+                border: "1px solid #b12718",
+                padding: "16px",
+                color: "#b12718",
+              },
+              iconTheme: {
+                primary: "#b12718",
+                secondary: "#e6e6e5",
+              },
+            });
+          }
+          //eklemek istediği ürün favorilerinde yok ise
+          else {
+            await addDoc(collection(db, "favorites"), {
+              product: product,
+              userEmail: auth.currentUser.email,
+              userId: auth.currentUser.uid,
+            });
+            toast("Favorilere Eklendi.");
+          }
+        } else {
+          toast.error(`Favorileriniz dolu.`, {
             style: {
               border: "1px solid #b12718",
               padding: "16px",
@@ -240,18 +267,15 @@ const Products = () => {
             },
           });
         }
-      } else if (userFavorites.length === 6) {
-        toast.error(`Favorileriniz dolu.`, {
-          style: {
-            border: "1px solid #b12718",
-            padding: "16px",
-            color: "#b12718",
-          },
-          iconTheme: {
-            primary: "#b12718",
-            secondary: "#e6e6e5",
-          },
+      }
+      //favorilerinde hiç ürün yok
+      else {
+        await addDoc(collection(db, "favorites"), {
+          product: product,
+          userEmail: auth.currentUser.email,
+          userId: auth.currentUser.uid,
         });
+        toast("Favorilere Eklendi.");
       }
     } else {
       navigate("/login");
