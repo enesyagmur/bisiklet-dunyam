@@ -39,7 +39,7 @@ Sipariş oluşturma-------------------------------
 
 Login-------------------------------
 
- -facebook giriş: yapılmadı
+
 
 
 Register-------------------------------
@@ -74,9 +74,9 @@ Güvenlik:
 
 Son Durum : ////////////////////////////////////////////////////////
 
-
-
-ürün favorilerde var ise eklemesin
+hesap giriliyken reset atınca hata vermesi
+sepette ürün sayısı arttırma azaltma
+sipariş verilince stock azaltma
 
 
 

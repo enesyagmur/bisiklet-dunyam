@@ -86,6 +86,8 @@ const UserAdress = ({ dropdownShow, setDropdownShow }) => {
     setUserAdress(searchAdress);
   };
 
+  useEffect(() => {}, []);
+
   useEffect(() => {
     getAdressFunc();
   }, []);

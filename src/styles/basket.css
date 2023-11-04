@@ -50,7 +50,26 @@
   max-height: 100%;
   max-width: 50%;
 }
-
+.basket-product .basket-count-change {
+  width: 80px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--white);
+  border: 1px solid var(--bgBody);
+}
+.count-change-icon {
+  width: 20px;
+  height: 28px;
+  background-color: var(--bgBody);
+  cursor: pointer;
+  border-radius: 5px;
+}
+.count-change-icon:hover {
+  background-color: var(--red);
+  color: var(--white);
+}
 .basket-product-delete-btn {
   width: 50px;
   height: 30px;
@@ -89,6 +108,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .basket-result .basket-result-price {
   width: 80%;
   height: 80px;

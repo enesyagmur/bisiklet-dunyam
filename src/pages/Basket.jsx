@@ -2,11 +2,17 @@ import "../styles/basket.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { productDeleteFromBasket } from "../redux/basketSlice";
+import {
+  decreaseProductFromBasket,
+  productAddToBasket,
+  productDeleteFromBasket,
+} from "../redux/basketSlice";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { BsPlusLg } from "react-icons/bs";
+import { BiMinus } from "react-icons/bi";
 import toast from "react-hot-toast";
 
 const Basket = () => {
@@ -25,6 +31,16 @@ const Basket = () => {
 
   const deleteProductFunc = (id) => {
     dispatch(productDeleteFromBasket(id));
+  };
+
+  //ürün arttırma
+  const increaseProductCountFunc = (product) => {
+    dispatch(productAddToBasket(product));
+  };
+
+  //ürün azaltma
+  const decreaseProductCountFunc = (product) => {
+    dispatch(decreaseProductFromBasket(product));
   };
 
   useEffect(() => {
@@ -73,6 +89,21 @@ const Basket = () => {
                     <img src={product.productImage} alt="" />
                   </div>
                   <p className="basket-product-name">{product.productName}</p>
+                  <div className="basket-count-change">
+                    <BiMinus
+                      className="count-change-icon"
+                      onClick={() => decreaseProductCountFunc(product)}
+                    />
+                    {product.productBasketCount ? (
+                      <p>{product.productBasketCount}</p>
+                    ) : (
+                      1
+                    )}
+                    <BsPlusLg
+                      className="count-change-icon"
+                      onClick={() => increaseProductCountFunc(product)}
+                    />
+                  </div>
                   <p className="basket-product-price">
                     {product.productPrice}TL
                   </p>

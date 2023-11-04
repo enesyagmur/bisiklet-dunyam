@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./account-styles/account.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
 import UserPersonel from "./account-components/UserPersonel";
@@ -18,8 +18,18 @@ import toast from "react-hot-toast";
 
 const Account = () => {
   const [dropdownShow, setDropdownShow] = useState(0);
+  const [activeUser, setActiveUser] = useState();
 
   const navigate = useNavigate();
+
+  //şu an da oturum açmış kullanıcıyı alma
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setActiveUser(user);
+    } else {
+      navigate("/login");
+    }
+  });
 
   //çıkış fonksiyonu
   const logoutFunc = () => {
