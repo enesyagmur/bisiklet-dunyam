@@ -24,7 +24,9 @@ const Basket = () => {
   useEffect(() => {
     let toplam = 0;
     basket.forEach((element) => {
-      toplam += Number(element.productPrice);
+      const productCount = element.productBasketCount;
+      const productCost = productCount * Number(element.productPrice);
+      toplam += productCost;
     });
     setTotal(toplam);
   }, [basket]);
