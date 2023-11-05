@@ -21,6 +21,7 @@ const Basket = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //sepette değişiklik yapıldıkça fiyat güncelleme
   useEffect(() => {
     let toplam = 0;
     basket.forEach((element) => {
@@ -30,10 +31,6 @@ const Basket = () => {
     });
     setTotal(toplam);
   }, [basket]);
-
-  const deleteProductFunc = (id) => {
-    dispatch(productDeleteFromBasket(id));
-  };
 
   //ürün arttırma
   const increaseProductCountFunc = (product) => {
@@ -109,12 +106,6 @@ const Basket = () => {
                   <p className="basket-product-price">
                     {product.productPrice}TL
                   </p>
-                  <button
-                    className="basket-product-delete-btn"
-                    onClick={() => deleteProductFunc(product.productId)}
-                  >
-                    <RiDeleteBin6Line />
-                  </button>
                 </div>
               ))
             : null}

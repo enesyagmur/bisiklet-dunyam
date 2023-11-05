@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 import AdressSelect from "./components/AdressSelect";
 import Payment from "./components/Payment";
 import { useParams } from "react-router-dom";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../../Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { clearBasket } from "../../redux/basketSlice";
@@ -24,7 +24,6 @@ const OrderCreate = () => {
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.basket.basketProducts);
   const userInfo = useSelector((state) => state.user.userInfoList);
-
   const createRandomNumberFunc = () => {
     setRandomNumber(Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000);
   };
@@ -33,9 +32,12 @@ const OrderCreate = () => {
     createRandomNumberFunc();
   }, []);
 
+  //sipariş sonrası ürün stok sayısını azaltan func
+
   //sipariş oluşturma
   const createOrderFunc = async () => {
     var now = new Date().toLocaleString(`tr-TR`);
+
     if (randomNumber !== 0) {
       if (contract === true) {
         try {
@@ -61,6 +63,21 @@ const OrderCreate = () => {
               secondary: "#121212",
             },
           });
+
+          basket.map((product) => {
+            const productRef = doc(db, "products", product.id);
+            const productCount = product.productBasketCount;
+            //sipariş oluşturulduktan sonra stok azaltan func
+            const stockUpdateFunc = async () => {
+              await updateDoc(productRef, {
+                productStock:
+                  Number(product.productStock) - Number(productCount),
+              });
+            };
+
+            stockUpdateFunc();
+          });
+
           setOrderInfo({
             orderNumber: randomNumber,
             orderAdress: adress,
@@ -68,6 +85,7 @@ const OrderCreate = () => {
             orderProducts: basket,
             deliveryType: deliveryType,
           });
+
           setOrderCreated(true);
           dispatch(clearBasket());
           setRandomNumber(0);
