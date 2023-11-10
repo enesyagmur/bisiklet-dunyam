@@ -13,7 +13,7 @@ const BasketIcon = () => {
   return (
     <div
       className={basket.length !== 0 ? "basket-icon" : "inactive"}
-      onClick={() => navigate("basket")}
+      onClick={() => navigate("/basket")}
     >
       {basket.length > 0 ? (
         <SlBasketLoaded className="icon" />

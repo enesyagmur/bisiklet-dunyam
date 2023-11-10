@@ -32,12 +32,9 @@ const OrderCreate = () => {
     createRandomNumberFunc();
   }, []);
 
-  //sipariş sonrası ürün stok sayısını azaltan func
-
   //sipariş oluşturma
   const createOrderFunc = async () => {
     var now = new Date().toLocaleString(`tr-TR`);
-
     if (randomNumber !== 0) {
       if (contract === true) {
         try {
@@ -125,6 +122,7 @@ const OrderCreate = () => {
               deliveryType={deliveryType}
               setDeliveryType={setDeliveryType}
             />
+
             <Payment deliveryType={deliveryType} />
           </div>
           <div className="order-result">

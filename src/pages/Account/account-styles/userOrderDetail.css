@@ -16,6 +16,7 @@
   justify-content: space-evenly;
   margin-top: 75px;
   margin-bottom: 75px;
+  position: relative;
 }
 
 .order-title {
@@ -112,7 +113,20 @@
   color: var(--white);
   border-radius: 5px;
 }
+/* ------------------------------------- */
 
+.order-detail .back-button {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 0%;
+  top: 34%;
+  font-size: var(--large);
+  cursor: pointer;
+}
+.order-detail .back-button:hover {
+  color: var(--red);
+}
 /* 600-1200px---------------------------------------- */
 @media (max-width: 1200px) {
 }

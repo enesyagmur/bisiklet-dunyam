@@ -36,42 +36,45 @@ const AdressSelect = ({ setAdress, deliveryType, setDeliveryType }) => {
   }, []);
   return (
     <div className="adress-select">
-      <div className="user-adress">
-        <p className="user-adress-title">
-          Kayıtlı Adres <BsPencil className="adres-change-btn" />
-        </p>
-        {userAdress[0] ? (
-          <div className="user-adress-info">
-            <div className="">
-              <p>Adres Başlığı </p> <p> {userAdress[0].adressTitle}</p>
-            </div>
-            <div className="">
-              <p>Sokak</p> <p> {userAdress[0].adressStreet}</p>
-            </div>
-            <div className="">
-              <p>Bina Bilgisi</p> <p>{userAdress[0].adressBuild}</p>
-            </div>
-            <div className="">
-              <p>Daire Numarası</p> <p>{userAdress[0].adressHouse}</p>
-            </div>
-            <div className="">
-              <p>Mahalle</p> <p>{userAdress[0].adressNeighborhood}</p>
-            </div>
+      {deliveryType === 1 ? null : (
+        <div className="user-adress">
+          <p className="user-adress-title">
+            Kayıtlı Adres <BsPencil className="adres-change-btn" />
+          </p>
+          {userAdress[0] ? (
+            <div className="user-adress-info">
+              <div className="">
+                <p>Adres Başlığı </p> <p> {userAdress[0].adressTitle}</p>
+              </div>
+              <div className="">
+                <p>Sokak</p> <p> {userAdress[0].adressStreet}</p>
+              </div>
+              <div className="">
+                <p>Bina Bilgisi</p> <p>{userAdress[0].adressBuild}</p>
+              </div>
+              <div className="">
+                <p>Daire Numarası</p> <p>{userAdress[0].adressHouse}</p>
+              </div>
+              <div className="">
+                <p>Mahalle</p> <p>{userAdress[0].adressNeighborhood}</p>
+              </div>
 
-            <div className="">
-              <p>İlçe</p> <p>{userAdress[0].adressCountry}</p>
-            </div>
+              <div className="">
+                <p>İlçe</p> <p>{userAdress[0].adressCountry}</p>
+              </div>
 
-            <div className="">
-              <p>Şehir</p> <p>{userAdress[0].adressCity}</p>
-            </div>
+              <div className="">
+                <p>Şehir</p> <p>{userAdress[0].adressCity}</p>
+              </div>
 
-            <div className="">
-              <p>Adres Açıklama</p> <p> {userAdress[0].adressDescription}</p>
+              <div className="">
+                <p>Adres Açıklama</p> <p> {userAdress[0].adressDescription}</p>
+              </div>
             </div>
-          </div>
-        ) : null}
-      </div>
+          ) : null}
+        </div>
+      )}
+
       <div className="delivery-type">
         <p className="delivery-type-title">Teslimat Tipi</p>
         <div className="types">

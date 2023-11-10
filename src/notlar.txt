@@ -75,8 +75,8 @@ Güvenlik:
 Son Durum : ////////////////////////////////////////////////////////
 
 hesap giriliyken reset atınca hata vermesi
-sipariş verilince stock azaltma
-account sipariş detay sayfası için back button
+
+
 
 
 

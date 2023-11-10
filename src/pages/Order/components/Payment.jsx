@@ -17,7 +17,10 @@ const Payment = ({ deliveryType }) => {
           <BsCash className="pay-methods-icon" />
         </div>
       </div>
-      <p>Açık olan ödeme yöntemlerini kullanabilirsiniz.</p>
+      <p>
+        Siparişinizi oluşturduktan sonra açık olan ödeme yöntemlerini
+        kullanabilirsiniz.
+      </p>
     </div>
   );
 };

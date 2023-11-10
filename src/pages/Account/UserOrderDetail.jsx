@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "../Account/account-styles/userOrderDetail.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import { db } from "../../Firebase";
 import toast from "react-hot-toast";
+import { BiArrowBack } from "react-icons/bi";
 
 const UserOrderDetail = () => {
   const { ordernumber } = useParams();
   const [orderInfo, setOrderInfo] = useState();
   const [InputReasonCancel, setInputReasonCancel] = useState("");
+  const navigate = useNavigate();
 
   //sipariş numarasından sipariş bulma
   const getOrderFunc = async () => {
@@ -78,6 +80,10 @@ const UserOrderDetail = () => {
       <Header />
       {orderInfo ? (
         <div className="order-detail">
+          <BiArrowBack
+            className="back-button"
+            onClick={() => navigate("/account")}
+          />
           <div className="order-title">
             <div className="order-number">
               <p>Sipariş Numarası</p> :
