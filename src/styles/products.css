@@ -289,6 +289,12 @@
   .open-filter div div p {
     width: 80px;
   }
+
+  /* ------------ */
+  .hide {
+    transition: all 0.5s;
+    display: none;
+  }
 }
 
 /* 0-425px --------------------------------------- */

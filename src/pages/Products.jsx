@@ -431,7 +431,10 @@ const Products = () => {
           </div>
           {/* Product-List------------------------------------------------------------ */}
           {afterPriceFilterProducts ? (
-            <div className="products-list" onClick={() => setOpenFilter(false)}>
+            <div
+              className={openFilter ? "hide" : "products-list"}
+              onClick={() => setOpenFilter(false)}
+            >
               {afterPriceFilterProducts.map((product) => (
                 <div className="product">
                   <AiOutlineHeart
