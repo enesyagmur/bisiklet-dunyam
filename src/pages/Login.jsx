@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../styles/login.css";
 import { FcGoogle } from "react-icons/fc";
-import { BsFacebook } from "react-icons/bs";
 import { GoogleAuthProvider, sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../Firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";

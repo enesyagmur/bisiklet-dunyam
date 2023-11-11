@@ -10,7 +10,7 @@ import { auth, db } from "../Firebase";
 import { useNavigate, useParams } from "react-router-dom";
 import { BsFilterCircleFill } from "react-icons/bs";
 import BasketIcon from "../components/BasketIcon";
-import toast from "react-hot-toast";
+import toast from "react-icons";
 import { AiOutlineHeart } from "react-icons/ai";
 
 const Products = () => {
