@@ -222,7 +222,7 @@
   color: orange;
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 4000px) {
   .filter-icon {
     display: none;
   }
@@ -230,9 +230,6 @@
 
 /* 600-1200px --------------------------------------- */
 @media (max-width: 1200px) {
-  .filter-icon {
-    display: none;
-  }
 }
 
 /* 425-600px --------------------------------------- */
