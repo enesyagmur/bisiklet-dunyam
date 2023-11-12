@@ -22,7 +22,7 @@ const Login = () => {
         const user = userCredential.user;
 
         if (user) {
-          if (inputEmail === "yakup@gmail.com" && inputPassword === "123456") {
+          if (inputEmail === "admin@gmail.com" && inputPassword === "123456") {
             navigate("/adminorders");
           } else {
             navigate("/");
