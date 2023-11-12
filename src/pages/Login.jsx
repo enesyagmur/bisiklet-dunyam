@@ -22,14 +22,7 @@ const Login = () => {
         const user = userCredential.user;
 
         if (user) {
-          if (
-            inputEmail.toLowerCase() === "admin@gmail.com" &&
-            inputPassword === "123456"
-          ) {
-            navigate("/adminorders");
-          } else {
-            navigate("/");
-          }
+          navigate("/");
         } else {
           toast.error(`Giriş başarısız.`, {
             style: {
