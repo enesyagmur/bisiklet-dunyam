@@ -15,7 +15,6 @@ const Login = () => {
   const [inputEmailForReset, setInputEmailForReset] = useState("");
   const navigate = useNavigate();
 
-  //giriş func
   const loginFunc = () => {
     signInWithEmailAndPassword(auth, inputEmail, inputPassword)
       .then((userCredential) => {
@@ -52,7 +51,6 @@ const Login = () => {
       });
   };
 
-  //google ile giriş func
   const provider = new GoogleAuthProvider();
   const loginGoogle = () => {
     signInWithPopup(auth, provider)
@@ -69,7 +67,6 @@ const Login = () => {
       });
   };
 
-  //password reset func
   const passwordResetFunc = () => {
     if (inputEmailForReset) {
       sendPasswordResetEmail(auth, inputEmailForReset)
