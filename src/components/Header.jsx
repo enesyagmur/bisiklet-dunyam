@@ -46,10 +46,18 @@ const Header = () => {
           BISIKLET DUNYAM
         </p>
         <div className="header-links">
-          <p onClick={() => go("")}>ANASAYFA</p>
-          <p onClick={() => go("products")}>ÜRÜNLER</p>
-          <p onClick={() => go("contact")}>İLETİŞİM</p>
-          <p onClick={() => go("account")}>HESAP</p>
+          <p className="page" onClick={() => go("")}>
+            ANASAYFA
+          </p>
+          <p className="page" onClick={() => go("products")}>
+            ÜRÜNLER
+          </p>
+          <p className="page" onClick={() => go("contact")}>
+            İLETİŞİM
+          </p>
+          <p className="page" onClick={() => go("account")}>
+            HESAP
+          </p>
         </div>
       </div>
     </div>

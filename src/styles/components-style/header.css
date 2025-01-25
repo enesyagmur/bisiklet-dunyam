@@ -59,14 +59,14 @@
   cursor: pointer;
 }
 .header-bottom .header-links {
-  width: 35%;
+  width: 40%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.header-links p {
-  width: 35%;
+.header-links .page {
+  width: 200px;
   height: 50px;
   display: flex;
   align-items: center;
@@ -103,10 +103,9 @@
     border-top: 0px;
     border-bottom: 2px solid var(--darkGray);
     flex-direction: column;
-  }
-  .header-bottom {
     justify-content: space-around;
   }
+
   .header-bottom p {
     margin-left: 15px;
     margin-right: 15px;
@@ -115,4 +114,8 @@
 
 /* 0-425px --------------------------------------- */
 @media (max-width: 425px) {
+  .header-links .page {
+    width: 100px;
+    padding: 10px;
+  }
 }
