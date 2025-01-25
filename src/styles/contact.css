@@ -173,6 +173,20 @@
   color: var(--white);
 }
 
+.result-success {
+  color: green;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+}
+
+.result-error {
+  color: red;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+}
+
 @media (max-width: 1900px) {
   .contact-channels {
     justify-content: center;

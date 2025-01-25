@@ -68,7 +68,7 @@ const ContactForm = () => {
         required
       />
       <div className="contact-form-agrement">
-        <input type="checkbox" name="" id="" />
+        <input type="checkbox" name="" id="" required />
         <div className="contact-form-agrement-explain">
           Bu formu doldurarak bilgilerinizin bu web sitesi tarafından
           saklanmasını kabul etmiş olursunuz.
@@ -77,14 +77,14 @@ const ContactForm = () => {
       <button className="contact-form-btn" type="submit">
         Gönder
       </button>
-      {/* {formStatus === "success" && (
-        <p style={{"color=green"}} className="text-green-500 mt-2">Mesajınız başarıyla gönderildi!</p>
+      {formStatus === "Success" && (
+        <p className="result-success">Mesajınız başarıyla gönderildi!</p>
       )}
-      {formStatus === "error" && (
-        <p className="text-red-500 mt-2">
+      {formStatus === "Error" && (
+        <p className="result-error">
           Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyin.
         </p>
-      )} */}
+      )}
     </form>
   );
 };
